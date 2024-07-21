@@ -1,11 +1,23 @@
 const express = require("express");
-const { Client, LocalAuth, MessageMedia } = require("whatsapp-web.js");
+const { Client, LocalAuth, MessageMedia, Buttons } = require("whatsapp-web.js");
 const qrcode = require("qrcode-terminal");
 const mongoose = require("mongoose");
-const { fetchUserData } = require("./api/fetcher");
+const { fetchUserData, fetchUserAttendance } = require("./api/fetcher");
+const cron = require("node-cron");
 
-const { saveUserData } = require("./db/userdb");
+const { saveUserData, getUserData } = require("./db/userdb");
 const { isloged } = require("./db/loged");
+
+// Assuming you have the JSON list stored in a variable
+const subjectNames = {
+  CST301: "Computer Science Theory",
+  CST303: "Software Engineering",
+  CST305: "Algorithms",
+  CST307: "Operating Systems",
+
+  Total: "Total Attendance",
+  Percentage: "Attendance Percentage",
+};
 
 const app = express();
 const port = 3000;
@@ -181,6 +193,87 @@ client.on("message", async (msg) => {
     // Reset state
     state.currentUserId = "";
     state.currentPassword = "";
+  }
+});
+
+//attendence
+client.on("message", async (msg) => {
+  if (msg.body === "!att") {
+    const from = msg.from;
+    try {
+      const userGet = await getUserData(from);
+      if (userGet) {
+        await msg.reply(`G’day! ${userGet.name}.\nLoading attendance...`);
+        const attendance = await fetchUserAttendance(
+          userGet.userid,
+          userGet.password
+        );
+        const attend = attendance.slice(0, -2);
+        const total = attendance.slice(-2);
+        let attendList = "Subject wise attendance:-:\n";
+        attend.forEach((attend, index) => {
+          const subjectName = subjectNames[attend.subject] || attend.subject;
+          attendList += `${index + 1}. ${subjectName} ->\n${
+            attend.attendance
+          }\n`;
+        });
+        let totalList = "Total attendance:-:\n";
+        total.forEach((total, index) => {
+          totalList += `${total.subject}  ->  ${total.attendance}\n`;
+        });
+        await client.sendMessage(msg.from, attendList);
+        await client.sendMessage(msg.from, totalList);
+      } else {
+        await msg.reply("Plz login to get attendance !");
+      }
+    } catch (error) {
+      console.error("Error fetching attendance", error);
+      await client.sendMessage(
+        msg.from,
+        "Sorry, there was an error fetching your attendance"
+      );
+    }
+  }
+});
+
+//auto_absent
+
+// Replace with the chat ID of the user you want to send the message to
+const chatId = "919526276014@c.us";
+
+// Schedule a job to run at 9:30 AM every day
+cron.schedule("47 17 * * *", async () => {
+  try {
+    const chat = await client.getChatById(chatId);
+    await chat.sendMessage("Good morning! This is your daily message.");
+    console.log("Message sent successfully.");
+  } catch (error) {
+    console.error("Error sending message:", error);
+  }
+});
+
+const button = new Buttons(
+  "This is a button message with buttons",
+  [
+    { body: "Button 1", id: "button_1" },
+    { body: "Button 2", id: "button_2" },
+    { body: "Button 3", id: "button_3" },
+  ],
+  "Title",
+  "Footer"
+);
+client.on("message", async (msg) => {
+  if (msg.body === "!btt") {
+    const from = msg.from;
+
+    client
+      .sendMessage(from, button)
+      .then((response) => {
+        console.log("Button message sent successfully:", response);
+      })
+      .catch((error) => {
+        console.error("Error sending button message:", error);
+      });
   }
 });
 

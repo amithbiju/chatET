@@ -11,5 +11,9 @@ function encryptPass(password) {
   const encryptedString = cryptr.encrypt(password);
   return encryptedString;
 }
+function decryptPass(password) {
+  const decryptedString = cryptr.decrypt(password);
+  return decryptedString;
+}
 
-module.exports = { encryptPass };
+module.exports = { encryptPass, decryptPass };

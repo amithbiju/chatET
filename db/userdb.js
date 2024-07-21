@@ -1,16 +1,6 @@
 const mongoose = require("mongoose");
-const { encryptPass } = require("../util/encrypt");
-
-// Define user schema and model
-const userSchema = new mongoose.Schema({
-  username: String,
-  name: String,
-  departmentId: String,
-  whid: String,
-  password: String,
-});
-
-const User = mongoose.model("User", userSchema);
+const { encryptPass, decryptPass } = require("../util/encrypt");
+const { User } = require("../model/user");
 
 async function saveUserData(userData, from, password) {
   const { username, name, department_id } = userData;
@@ -45,4 +35,26 @@ async function saveUserData(userData, from, password) {
   }
 }
 
-module.exports = { saveUserData, User };
+async function getUserData(from) {
+  try {
+    const existingUser = await User.findOne({ whid: from }).select(
+      "username name password"
+    );
+
+    if (existingUser) {
+      const password = decryptPass(existingUser.password);
+      return {
+        userid: existingUser.username,
+        name: existingUser.name,
+        password: password,
+      };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching data from db:", error);
+    throw error;
+  }
+}
+
+module.exports = { saveUserData, getUserData };

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { User } = require("./userdb");
+const { User } = require("../model/user");
 
 async function isloged(from) {
   try {
