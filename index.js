@@ -6,7 +6,10 @@ const { fetchUserData, fetchUserAttendance } = require("./api/fetcher");
 const cron = require("node-cron");
 
 const { saveUserData, getUserData } = require("./db/userdb");
+const { getAllUserAttendance, saveAttendData } = require("./db/attenddb");
 const { isloged } = require("./db/loged");
+
+const { getAbsentSubjects } = require("./util/absentfind");
 
 // Assuming you have the JSON list stored in a variable
 const subjectNames = {
@@ -238,47 +241,65 @@ client.on("message", async (msg) => {
 
 //auto_absent
 
-// Replace with the chat ID of the user you want to send the message to
-const chatId = "919526276014@c.us";
-
-// Schedule a job to run at 9:30 AM every day
-cron.schedule("47 17 * * *", async () => {
-  try {
-    const chat = await client.getChatById(chatId);
-    await chat.sendMessage("Good morning! This is your daily message.");
-    console.log("Message sent successfully.");
-  } catch (error) {
-    console.error("Error sending message:", error);
-  }
-});
-
-const button = new Buttons(
-  "This is a button message with buttons",
-  [
-    { body: "Button 1", id: "button_1" },
-    { body: "Button 2", id: "button_2" },
-    { body: "Button 3", id: "button_3" },
-  ],
-  "Title",
-  "Footer"
-);
 client.on("message", async (msg) => {
-  if (msg.body === "!btt") {
+  if (msg.body === "!ab-enable") {
     const from = msg.from;
-
-    client
-      .sendMessage(from, button)
-      .then((response) => {
-        console.log("Button message sent successfully:", response);
-      })
-      .catch((error) => {
-        console.error("Error sending button message:", error);
-      });
+    try {
+      const userGet = await getUserData(from);
+      if (userGet) {
+        await msg.reply(
+          `G’day! ${userGet.name}. You have enabled Absent detection and Notification provider.`
+        );
+        const attendance = await fetchUserAttendance(
+          userGet.userid,
+          userGet.password
+        );
+        await saveAttendData(userGet.userid, from, attendance, true); //saving to db
+      } else {
+        await msg.reply("Plz login to enable it!");
+      }
+    } catch (error) {
+      console.error("Error fetching attendance", error);
+      await client.sendMessage(
+        msg.from,
+        "Sorry, there was an error fetching your attendance"
+      );
+    }
   }
 });
 
-console.log;
+client.on("ready", async () => {
+  //cron.schedule("* * * * *", async () => {
+  try {
+    const users = await getAllUserAttendance();
+    for (const user of users) {
+      const message = `Hello ${user.username}, this is a automated message from ChatET. sheduled`;
+      await client.sendMessage(user.whid, message);
+      console.log(`Message sent to ${user.username} (${user.whid})`);
+      try {
+        const userGet = await getUserData(user.whid);
+        if (userGet) {
+          const todayAttendance = await fetchUserAttendance(
+            userGet.userid,
+            userGet.password
+          );
+          getAbsentSubjects(user.subjectData, todayAttendance)
+            .then((absentSubjects) =>
+              console.log("Absent subjects:", absentSubjects)
+            )
+            .catch((error) => console.error("Error:", error));
 
+          await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
+        }
+      } catch (error) {
+        console.error("Error fetching attendance new ", error);
+      }
+    }
+  } catch (error) {
+    console.error("Error sending messages:", error);
+  }
+  // });
+});
 // When the client received QR-Code
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });

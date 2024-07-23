@@ -1,20 +1,53 @@
 const mongoose = require("mongoose");
-const { encryptPass, decryptPass } = require("../util/encrypt");
-const { User } = require("../model/user");
 
-async function getAllUserData() {
+const { Attendance } = require("../model/user");
+
+async function getAllUserAttendance() {
   try {
-    const users = await User.find({}).select("username name password");
+    const attend = await Attendance.find({ enable: true }).select(
+      "username  whid subjectData"
+    );
 
-    const userData = users.map((user) => ({
+    const userAttendance = attend.map((user) => ({
       username: user.username,
-      name: user.name,
-      password: decryptPass(user.password),
+      whid: user.whid,
+      subjectData: user.subjectData,
     }));
 
-    return userData;
+    return userAttendance;
   } catch (error) {
-    console.error("Error fetching data from db:", error);
+    console.error("Error fetching attendance from db:", error);
     throw error;
   }
 }
+
+//this is to save attendance data
+async function saveAttendData(username, from, attendance, enable) {
+  try {
+    const existingUser = await Attendance.findOne({ whid: from });
+
+    if (existingUser) {
+      // Update existing user information
+      existingUser.username = username;
+      existingUser.subjectData = attendance;
+      existingUser.enable = enable;
+      await existingUser.save();
+      console.log("User data updated successfully.");
+    } else {
+      // Save new user information
+      const newAttendance = new Attendance({
+        username,
+        whid: from,
+        subjectData: attendance,
+        enable,
+      });
+      await newAttendance.save();
+      console.log("User data saved successfully.");
+    }
+  } catch (error) {
+    console.error("Error saving or updating user data:", error);
+    throw error;
+  }
+}
+
+module.exports = { getAllUserAttendance, saveAttendData };
