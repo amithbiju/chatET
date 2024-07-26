@@ -19,9 +19,6 @@ const {
 // Assuming you have the JSON list stored in a variable
 const subjectNames = {
   CST301: "Computer Science Theory",
-  CST303: "Software Engineering",
-  CST305: "Algorithms",
-  CST307: "Operating Systems",
 
   Total: "Total Attendance",
   Percentage: "Attendance Percentage",
