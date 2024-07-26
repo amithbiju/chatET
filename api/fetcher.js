@@ -1,8 +1,9 @@
 const axios = require("axios");
+const { scrapUrl } = require("../constants/constants");
 
 async function fetchUserData(username, password) {
   try {
-    const response = await axios.post("http://127.0.0.1:5000/", {
+    const response = await axios.post(scrapUrl, {
       password: password,
       username: username,
     });
@@ -15,7 +16,7 @@ async function fetchUserData(username, password) {
 
 async function fetchUserAttendance(username, password) {
   try {
-    const response = await axios.post("http://127.0.0.1:5000/", {
+    const response = await axios.post(scrapUrl, {
       password: password,
       username: username,
     });
