@@ -1,4 +1,4 @@
-const scrapUrl = "https://etlabscrapper.onrender.com/";
+const scrapUrl = " http://0.0.0.0:5000";
 
 const welcomemsg =
   "Welcome to ChatET!🤩 How can I assist you today?\n\n" +
