@@ -16,13 +16,7 @@ const {
   welcomemsg,
   helpmsg,
 } = require("./constants/constants");
-// Assuming you have the JSON list stored in a variable
-const subjectNames = {
-  CST301: "Computer Science Theory",
-
-  Total: "Total Attendance",
-  Percentage: "Attendance Percentage",
-};
+const { subjectNames } = require("./constants/subjectname");
 
 const app = express();
 const port = 3000;
@@ -281,16 +275,16 @@ client.on("message", async (msg) => {
         );
         const attend = attendance.slice(0, -2);
         const total = attendance.slice(-2);
-        let attendList = "_Subject wise attendance:-_\n";
+        let attendList = "*Subject wise attendance*\n";
         attend.forEach((attend, index) => {
           const subjectName = subjectNames[attend.subject] || attend.subject;
-          attendList += `${index + 1}. ${subjectName} ->\n${
+          attendList += `${index + 1}. _${subjectName}_ \n        *${
             attend.attendance
-          }\n`;
+          }*\n\n`;
         });
         let totalList = "_Total attendance:-_\n";
         total.forEach((total, index) => {
-          totalList += `${total.subject}  ->  ${total.attendance}\n`;
+          totalList += `${total.subject}  ->  *${total.attendance}*\n`;
         });
         await client.sendMessage(msg.from, attendList);
         await client.sendMessage(msg.from, totalList);
@@ -361,44 +355,47 @@ client.on("message", async (msg) => {
 });
 
 client.on("ready", async () => {
-  //cron.schedule("30 09 * * *", async () => {
-  try {
-    const users = await getAllUserAttendance();
-    for (const user of users) {
-      try {
-        const userGet = await getUserData(user.whid);
-        if (userGet) {
-          const todayAttendance = await fetchUserAttendance(
-            userGet.userid,
-            userGet.password
-          );
-          getAbsentSubjects(user.subjectData, todayAttendance)
-            .then(async (absentSubjects) => {
-              if (absentSubjects) {
-                console.log("Absent subjects:", absentSubjects);
-                const absent = absentSubjects.slice(0, -1);
-                let absentList = `You (${user.username}) were absent on :- \n`;
-                absent.forEach((absent, index) => {
-                  absentList += `${index + 1}. ${absent}\n`;
-                });
-                absentList +=
-                  "hours yesterday❗ \nplz contact subject teacher if you were present..\nCheck you current attendance at `/att` or `att`";
-                await client.sendMessage(user.whid, absentList);
-                console.log(`Message sent to ${user.username} (${user.whid})`);
-              }
-            })
-            .catch((error) => console.error("Error:", error));
+  cron.schedule("30 03 * * *", async () => {
+    try {
+      const users = await getAllUserAttendance();
+      for (const user of users) {
+        try {
+          const userGet = await getUserData(user.whid);
+          if (userGet) {
+            const todayAttendance = await fetchUserAttendance(
+              userGet.userid,
+              userGet.password
+            );
+            getAbsentSubjects(user.subjectData, todayAttendance)
+              .then(async (absentSubjects) => {
+                if (absentSubjects) {
+                  console.log("Absent subjects:", absentSubjects);
+                  const absent = absentSubjects.slice(0, -1);
+                  let absentList = `🛑\nYou (${user.username}) were absent on :- \n`;
+                  absent.forEach((absent, index) => {
+                    const subjectName = subjectNames[absent] || absent;
+                    absentList += `${index + 1}. *${subjectName}*\n`;
+                  });
+                  absentList +=
+                    "hours yesterday❗ \nplz contact subject teacher if you were present..\nCheck you current attendance at `/att` or `att`";
+                  await client.sendMessage(user.whid, absentList);
+                  console.log(
+                    `Message sent to ${user.username} (${user.whid})`
+                  );
+                }
+              })
+              .catch((error) => console.error("Error:", error));
 
-          //await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
+            await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
+          }
+        } catch (error) {
+          console.error("Error fetching attendance new ", error);
         }
-      } catch (error) {
-        console.error("Error fetching attendance new ", error);
       }
+    } catch (error) {
+      console.error("Error sending messages:", error);
     }
-  } catch (error) {
-    console.error("Error sending messages:", error);
-  }
-  //});
+  });
 });
 // When the client received QR-Code
 client.on("qr", (qr) => {
