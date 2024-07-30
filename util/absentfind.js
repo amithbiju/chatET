@@ -24,7 +24,11 @@ async function getAbsentSubjects(pastDayAttendance, todayAttendance) {
       }
     });
 
-    return absentSubjects;
+    if (absentSubjects.length > 0) {
+      return absentSubjects;
+    } else {
+      return null;
+    }
   } catch (error) {
     console.error("Error comparing attendance:", error);
     throw error;
@@ -32,17 +36,3 @@ async function getAbsentSubjects(pastDayAttendance, todayAttendance) {
 }
 
 module.exports = { getAbsentSubjects };
-// Example usage
-const pastDayAttendance = [
-  { attendance: "2/2 (100%)", subject: "CST301" },
-  { attendance: "4/4 (100%)", subject: "CST303" },
-  { attendance: "2/2 (100%)", subject: "CST305" },
-  // Add more past day attendance data
-];
-
-const todayAttendance = [
-  { attendance: "2/3 (67%)", subject: "CST301" }, // Was absent today
-  { attendance: "4/4 (100%)", subject: "CST303" },
-  { attendance: "2/2 (100%)", subject: "CST305" },
-  // Add more today attendance data
-];

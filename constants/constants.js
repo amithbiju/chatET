@@ -1,4 +1,4 @@
-const scrapUrl = " http://0.0.0.0:5000";
+const scrapUrl = "http://127.0.0.1:5000";
 
 const welcomemsg =
   "Welcome to ChatET!🤩 How can I assist you today?\n\n" +
@@ -15,7 +15,8 @@ const welcomemsg =
   "Other commands:\n" +
   "*/privacy* - _Privacy and terms&conditions for users._\n" +
   "*/team* - _The whole team of ChatET._\n" +
-  "*/dev* - _Contact of Developer._";
+  "*/dev* - _Contact of Developer._\n\n" +
+  "_(❗You can use all the commands without '/' prefix too..)_";
 
 const helpmsg =
   "Here are the commands you can use:✅\n\n" +
@@ -31,7 +32,8 @@ const helpmsg =
   "Other commands:\n" +
   "*/privacy* - _Privacy and terms&conditions for users._\n" +
   "*/team* - _The whole team behind ChatET._\n" +
-  "*/dev* - _Contact of Developer._";
+  "*/dev* - _Contact of Developer._\n\n" +
+  "_(❗You can use all the commands without '/' prefix too..)_";
 const privacynote =
   "Privacy Note⭕\n\n" +
   "At ChatET, your privacy and security are our top priorities. We are committed to protecting your personal information and ensuring that your data is handled with the utmost care.\n\n" +
@@ -53,10 +55,10 @@ const privacynote =
 
 const team =
   "*Our Team*\n\n" +
-  "Meet the brilliant minds behind ChatET✌\n\n" +
+  "Meet the minds behind ChatET✌\n\n" +
   "*Amith Biju* - _Development_\n" +
   "*Abhijith PV* & *Hrishikesh* - _Designers_\n" +
-  "*Devanarayana* - _WhatsApp Management_\n" +
+  "*Devanarayan* - _WhatsApp Management_\n" +
   "*Pranav SA* & *Afsal Muhammed* - _Quality Assurance_\n\n" +
   "Together, we strive to provide you with the best experience!❤";
 

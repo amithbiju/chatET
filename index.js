@@ -74,9 +74,9 @@ client.on("message", (msg) => {
     msg.body === "HELLO"
   ) {
     msg.reply(welcomemsg);
-  } else if (msg.body == "/help") {
+  } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
     msg.reply(helpmsg);
-  } else if (msg.body == "/start") {
+  } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
     msg.reply(
       "*Welcome to ChatET!🤩*\nFirst start using ChatEt by connecting bot with ETLab use '/login' or get commands at '/help'"
     );
@@ -84,7 +84,7 @@ client.on("message", (msg) => {
 });
 
 client.on("message", (msg) => {
-  if (msg.body == "/about") {
+  if (msg.body == "/about" || /^(about)$/i.test(msg.body)) {
     msg
       .reply(
         "*About ChatET*\nWelcome to ChatET, your personal attendance assistant!this is a simple bot Designed to simplify your academic life, ChatET provides real-time access to your attendance information directly on WhatsApp. \n\n*Features:*\n_Instant Attendance Updates:_ Quickly check your attendance status anytime. \n_Survey-Free:_ Bypass compulsory surveys on ETLab. \n_Secure Credentials:_ Your ETLab credentials are stored securely with encryption. \n_Absence Notifications:_ Get notified if you’re marked absent from any class."
@@ -97,28 +97,19 @@ client.on("message", (msg) => {
   }
 });
 client.on("message", (msg) => {
-  if (msg.body == "/privacy") {
+  if (msg.body == "/privacy" || /^(privacy)$/i.test(msg.body)) {
     msg.reply(privacynote);
-  } else if (msg.body == "/team") {
+  } else if (msg.body == "/team" || /^(team)$/i.test(msg.body)) {
     msg.reply(team);
   }
 });
 client.on("message", async (msg) => {
-  if (msg.body === "/dev") {
-    const contactId = "919526276014@c.us"; // The WhatsApp ID of the contact
-    const contact = await client.getContactById(contactId);
-
-    if (contact) {
-      const vCard = `BEGIN:VCARD\nVERSION:3.0\nFN:${contact.pushname}\nTEL;TYPE=CELL:${contact.number}\nEND:VCARD`;
-      await client.sendMessage(msg.from, vCard, {
-        sendMediaAsSticker: false,
-        mediaType: "vCard",
-        quotedMsgId: null,
-      });
-      msg.reply("Contact card sent!");
-    } else {
-      msg.reply("Contact not found!");
-    }
+  const contactId = "919526276014";
+  const contactIdd = "917736897530";
+  if (msg.body === "/dev" || /^(dev)$/i.test(msg.body)) {
+    msg.reply(`Amith Biju- ${contactId}`);
+  } else if (msg.body == "/support" || /^(support)$/i.test(msg.body)) {
+    msg.reply(`Devanarayan- ${contactIdd}\nAmith Biju- ${contactId}`);
   }
 });
 //LOGIN
@@ -140,7 +131,7 @@ client.on("message", async (msg) => {
   const state = loginStates[from];
 
   if (
-    msg.body === "/login" &&
+    (msg.body === "/login" || /^(login)$/i.test(msg.body)) &&
     !state.awaitingUsername &&
     !state.awaitingPassword
   ) {
@@ -148,7 +139,7 @@ client.on("message", async (msg) => {
       const userName = await isloged(from);
       if (userName) {
         await msg.reply(
-          `You are already logged in as ${userName}.🤗\nWant to change login credentials, Try "!signin".`
+          `You are already logged in as ${userName}.🤗\nWant to change login credentials, Try '/signin'.`
         );
         state.isloggedin = true;
       } else {
@@ -225,7 +216,7 @@ client.on("message", async (msg) => {
   const state = signinStates[from];
 
   if (
-    msg.body === "!signin" &&
+    (msg.body === "/signin" || /^(signin)$/i.test(msg.body)) &&
     !state.awaitingUsername &&
     !state.awaitingPassword
   ) {
@@ -274,7 +265,11 @@ client.on("message", async (msg) => {
 
 //attendence
 client.on("message", async (msg) => {
-  if (msg.body === "/attendance" || msg.body === "/att") {
+  if (
+    msg.body === "/attendance" ||
+    msg.body === "/att" ||
+    /^(att)$/i.test(msg.body)
+  ) {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
@@ -315,13 +310,13 @@ client.on("message", async (msg) => {
 //auto_absent
 
 client.on("message", async (msg) => {
-  if (msg.body === "/notify-ab") {
+  if (msg.body === "/notify-ab" || /^(notify-ab)$/i.test(msg.body)) {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
       if (userGet) {
         await msg.reply(
-          `G’day! ${userGet.name} 🤗.\n_You have enabled Absent detection and Notification provider , you will be notified every day morning if you miss a class._`
+          `G’day! ${userGet.name} 🤗.\n_You have *enabled* Absent detection and Notification provider , you will be notified every day morning if you miss a class._`
         );
         const attendance = await fetchUserAttendance(
           userGet.userid,
@@ -342,13 +337,13 @@ client.on("message", async (msg) => {
 });
 
 client.on("message", async (msg) => {
-  if (msg.body === "/stop-ab") {
+  if (msg.body === "/stop-ab" || /^(stop-ab)$/i.test(msg.body)) {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
       if (userGet) {
         await msg.reply(
-          `G’day! ${userGet.name} 🤗.\n_You have disabled Absent detection and Notification provider._`
+          `G’day! ${userGet.name} 🤗.\n_You have *disabled* Absent detection and Notification provider._`
         );
         const attendance = null;
         await saveAttendData(userGet.userid, from, attendance, false); //saving to db
@@ -366,19 +361,20 @@ client.on("message", async (msg) => {
 });
 
 client.on("ready", async () => {
-  cron.schedule("30 09 * * *", async () => {
-    try {
-      const users = await getAllUserAttendance();
-      for (const user of users) {
-        try {
-          const userGet = await getUserData(user.whid);
-          if (userGet) {
-            const todayAttendance = await fetchUserAttendance(
-              userGet.userid,
-              userGet.password
-            );
-            getAbsentSubjects(user.subjectData, todayAttendance)
-              .then(async (absentSubjects) => {
+  //cron.schedule("30 09 * * *", async () => {
+  try {
+    const users = await getAllUserAttendance();
+    for (const user of users) {
+      try {
+        const userGet = await getUserData(user.whid);
+        if (userGet) {
+          const todayAttendance = await fetchUserAttendance(
+            userGet.userid,
+            userGet.password
+          );
+          getAbsentSubjects(user.subjectData, todayAttendance)
+            .then(async (absentSubjects) => {
+              if (absentSubjects) {
                 console.log("Absent subjects:", absentSubjects);
                 const absent = absentSubjects.slice(0, -1);
                 let absentList = `You (${user.username}) were absent on :- \n`;
@@ -386,22 +382,23 @@ client.on("ready", async () => {
                   absentList += `${index + 1}. ${absent}\n`;
                 });
                 absentList +=
-                  "hours yesterday! plz contact subject teacher if you were present..\nCheck you current attendance at '!att'";
+                  "hours yesterday❗ \nplz contact subject teacher if you were present..\nCheck you current attendance at `/att` or `att`";
                 await client.sendMessage(user.whid, absentList);
                 console.log(`Message sent to ${user.username} (${user.whid})`);
-              })
-              .catch((error) => console.error("Error:", error));
+              }
+            })
+            .catch((error) => console.error("Error:", error));
 
-            //await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
-          }
-        } catch (error) {
-          console.error("Error fetching attendance new ", error);
+          //await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
         }
+      } catch (error) {
+        console.error("Error fetching attendance new ", error);
       }
-    } catch (error) {
-      console.error("Error sending messages:", error);
     }
-  });
+  } catch (error) {
+    console.error("Error sending messages:", error);
+  }
+  //});
 });
 // When the client received QR-Code
 client.on("qr", (qr) => {
