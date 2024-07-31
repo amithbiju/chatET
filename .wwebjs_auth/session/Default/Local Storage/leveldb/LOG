@@ -1,3 +1,5 @@
-2024/07/30-22:10:58.255 588 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
-2024/07/30-22:10:58.255 588 Recovering log #63
-2024/07/30-22:10:58.256 588 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\Local Storage\leveldb/000063.log 
+2024/07/31-20:28:13.897 2954 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2024/07/31-20:28:13.899 2954 Recovering log #63
+2024/07/31-20:28:13.900 2954 Level-0 table #65: started
+2024/07/31-20:28:13.905 2954 Level-0 table #65: 15611 bytes OK
+2024/07/31-20:28:13.906 2954 Delete type=0 #63

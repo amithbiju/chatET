@@ -1,4 +1,19 @@
-2024/07/30-22:09:29.720 2a50 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/07/30-22:09:29.720 2a50 Recovering log #723
-2024/07/30-22:09:29.756 2a50 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000723.log 
-2024/07/30-22:09:38.102 2f58 Manual compaction at level-0 from '\x00\xbb\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xbc\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/07/30-22:10:58.731 2668 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/07/30-22:10:58.731 2668 Recovering log #723
+2024/07/30-22:10:58.800 2668 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000723.log 
+2024/07/30-22:11:07.203 f8c Level-0 table #731: started
+2024/07/30-22:11:07.219 f8c Level-0 table #731: 331115 bytes OK
+2024/07/30-22:11:07.220 f8c Delete type=0 #723
+2024/07/30-22:11:07.221 f8c Manual compaction at level-0 from '\x00\xbc\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xbd\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/07/30-22:11:10.607 f8c Compacting 1@1 + 4@2 files
+2024/07/30-22:11:10.829 f8c Generated table #732@1: 85986 keys, 2236405 bytes
+2024/07/30-22:11:11.186 f8c Generated table #733@1: 77107 keys, 2264898 bytes
+2024/07/30-22:11:11.357 f8c Generated table #734@1: 17153 keys, 2171134 bytes
+2024/07/30-22:11:11.564 f8c Generated table #735@1: 51516 keys, 1349902 bytes
+2024/07/30-22:11:11.564 f8c Compacted 1@1 + 4@2 files => 8022339 bytes
+2024/07/30-22:11:11.564 f8c compacted to: files[ 0 0 4 0 0 0 0 ]
+2024/07/30-22:11:11.565 f8c Delete type=2 #725
+2024/07/30-22:11:11.565 f8c Delete type=2 #726
+2024/07/30-22:11:11.565 f8c Delete type=2 #727
+2024/07/30-22:11:11.565 f8c Delete type=2 #728
+2024/07/30-22:11:11.565 f8c Delete type=2 #731
