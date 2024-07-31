@@ -169,6 +169,12 @@ client.on("message", async (msg) => {
       );
       console.log(from);
       await saveUserData(user.user_data, from, state.currentPassword); //saving to db
+      await saveAttendData(
+        user.user_data.username,
+        from,
+        user.subject_data,
+        true
+      ); //saving to db
       await client.sendMessage(
         msg.from,
         `Hello ${user.user_data.name} (${user.user_data.department_id}) welcome to ChatET 😎.`
@@ -233,10 +239,16 @@ client.on("message", async (msg) => {
         state.currentPassword
       );
       console.log(from);
-      await saveUserData(user, from, state.currentPassword); //saving to db
+      await saveUserData(user.user_data, from, state.currentPassword); //saving to db
+      await saveAttendData(
+        user.user_data.username,
+        from,
+        user.subject_data,
+        true
+      ); //saving to db
       await client.sendMessage(
         msg.from,
-        `Hello ${user.name} (${user.department_id}) welcome to ChatET😎`
+        `Hello ${user.user_data.name} (${user.user_data.department_id}) welcome to ChatET😎`
       );
       await client.sendMessage(
         msg.from,
