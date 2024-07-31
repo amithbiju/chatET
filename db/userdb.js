@@ -57,4 +57,21 @@ async function getUserData(from) {
   }
 }
 
-module.exports = { saveUserData, getUserData };
+async function deleteUserData(from) {
+  try {
+    const result = await User.findOneAndDelete({ whid: from });
+
+    if (result) {
+      console.log(`User data for ${from} deleted successfully.`);
+      return true;
+    } else {
+      console.log(`No user found with whid: ${from}`);
+      return false;
+    }
+  } catch (error) {
+    console.error("Error deleting data from db:", error);
+    throw error;
+  }
+}
+
+module.exports = { saveUserData, getUserData, deleteUserData };

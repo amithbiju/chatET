@@ -9,7 +9,7 @@ const welcomemsg =
   "*/attendance* or */att* - Get your current attendance\n\n" +
   "*/notify-ab* - Enable absence notifications\n\n" +
   "*/stop-ab* - Disable absence notifications\n\n" +
-  "*/settings* - Manage your account settings\n\n" +
+  "*/signout* - To signout of ChatET\n\n" +
   "*/about* - Learn more about ChatET \n\n" +
   "*/support* - Get support for your problem \n\n" +
   "Other commands:\n" +
@@ -26,7 +26,7 @@ const helpmsg =
   "*/attendance* or */att* - Get your current attendance\n\n" +
   "*/notify-ab* - Enable absence notifications\n\n" +
   "*/stop-ab* - Disable absence notifications\n\n" +
-  "*/settings* - Manage your account settings\n\n" +
+  "*/signout* - To signout of ChatET\n\n" +
   "*/about* - Learn more about ChatET \n\n" +
   "*/support* - Get support for your problem \n\n" +
   "Other commands:\n" +

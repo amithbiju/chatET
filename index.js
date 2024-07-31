@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { fetchUserData, fetchUserAttendance } = require("./api/fetcher");
 const cron = require("node-cron");
 
-const { saveUserData, getUserData } = require("./db/userdb");
+const { saveUserData, getUserData, deleteUserData } = require("./db/userdb");
 const { getAllUserAttendance, saveAttendData } = require("./db/attenddb");
 const { isloged } = require("./db/loged");
 
@@ -100,10 +100,13 @@ client.on("message", (msg) => {
 client.on("message", async (msg) => {
   const contactId = "919526276014";
   const contactIdd = "917736897530";
+  const contactIda = "918921843449";
   if (msg.body === "/dev" || /^(dev)$/i.test(msg.body)) {
-    msg.reply(`Amith Biju- ${contactId}`);
+    msg.reply(`Amith Biju- ${contactId}\nFeel free to contact😊`);
   } else if (msg.body == "/support" || /^(support)$/i.test(msg.body)) {
-    msg.reply(`Devanarayan- ${contactIdd}\nAmith Biju- ${contactId}`);
+    msg.reply(
+      `*Support-*\nDevanarayan- ${contactIdd}\nAfsal- ${contactIda}\nAmith Biju- ${contactId}\n_Feel free to contact us we can help you out_😊`
+    );
   }
 });
 //LOGIN
@@ -158,7 +161,7 @@ client.on("message", async (msg) => {
     );
   } else if (state.awaitingPassword && from === msg.from && !state.isloggedin) {
     state.currentPassword = msg.body;
-
+    await client.sendMessage(msg.from, "Plz wait.. validating🧐");
     state.awaitingPassword = false;
     state.isloggedin = false;
     // Fetch user data from API
@@ -266,6 +269,30 @@ client.on("message", async (msg) => {
     // Reset state
     state.currentUserId = "";
     state.currentPassword = "";
+  }
+});
+
+//signout
+client.on("message", async (msg) => {
+  if (msg.body === "/signout" || /^(signout)$/i.test(msg.body)) {
+    const from = msg.from;
+    try {
+      const userGet = await getUserData(from);
+      if (userGet) {
+        deleteUserData(from);
+        await msg.reply(
+          `SignedOut!!😌\nIt was a pleasure to serve you, ${userGet.name}😊`
+        );
+      } else {
+        await msg.reply("You are not LogedIn😌");
+      }
+    } catch (error) {
+      console.error("Error fetching attendance", error);
+      await client.sendMessage(
+        msg.from,
+        "Sorry, there was an error fetching your user details😥"
+      );
+    }
   }
 });
 
@@ -383,7 +410,7 @@ client.on("ready", async () => {
                 if (absentSubjects) {
                   console.log("Absent subjects:", absentSubjects);
                   const absent = absentSubjects.slice(0, -1);
-                  let absentList = `🛑\nYou (${user.username}) were absent on :- \n`;
+                  let absentList = `Good Morning!🌞\n🛑\nYou (${user.username}) were absent on :- \n`;
                   absent.forEach((absent, index) => {
                     const subjectName = subjectNames[absent] || absent;
                     absentList += `${index + 1}. *${subjectName}*\n`;
