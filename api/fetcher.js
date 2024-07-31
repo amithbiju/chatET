@@ -7,7 +7,7 @@ async function fetchUserData(username, password) {
       password: password,
       username: username,
     });
-    return response.data.user_data;
+    return response.data;
   } catch (error) {
     console.error("Error fetching user:", error);
     throw error;
