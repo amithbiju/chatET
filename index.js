@@ -187,7 +187,7 @@ client.on("message", async (msg) => {
         "User data saved successfully😊\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
       );
     } catch (error) {
-      await client.sendMessage(msg.from, `${user.error}😔..`);
+      await client.sendMessage(msg.from, `${error}😔..`);
     }
     console.log(state.currentUserId);
     console.log(state.currentPassword);
@@ -255,7 +255,7 @@ client.on("message", async (msg) => {
         "User data saved successfully.🤩\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
       );
     } catch (error) {
-      await client.sendMessage(msg.from, `${user.error}😔..`);
+      await client.sendMessage(msg.from, `${error}😔..`);
     }
     console.log(state.currentUserId);
     console.log(state.currentPassword);
