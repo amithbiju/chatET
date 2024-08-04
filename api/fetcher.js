@@ -16,7 +16,7 @@ async function fetchUserData(username, password) {
 
 async function fetchUserAttendance(username, password) {
   try {
-    const response = await axios.post(scrapUrl, {
+    const response = await axios.post(`${scrapUrl}/att`, {
       password: password,
       username: username,
     });

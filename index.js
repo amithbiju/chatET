@@ -184,13 +184,10 @@ client.on("message", async (msg) => {
       );
       await client.sendMessage(
         msg.from,
-        "User data saved successfully😊.\n(❗We recomment to delete the password message due to privacy concerns.)"
+        "User data saved successfully😊\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
       );
     } catch (error) {
-      await client.sendMessage(
-        msg.from,
-        "Sorry, Your userId or password is wrong!!😔"
-      );
+      await client.sendMessage(msg.from, `${user.error}😔..`);
     }
     console.log(state.currentUserId);
     console.log(state.currentPassword);
@@ -231,8 +228,8 @@ client.on("message", async (msg) => {
     state.awaitingPassword = true;
     await msg.reply("Plz enter the EtLab password.");
   } else if (state.awaitingPassword && from === msg.from) {
+    await client.sendMessage(msg.from, "Plz wait.. validating🧐");
     state.currentPassword = msg.body;
-
     state.awaitingPassword = false;
 
     // Fetch user data from API
@@ -255,13 +252,10 @@ client.on("message", async (msg) => {
       );
       await client.sendMessage(
         msg.from,
-        "User data saved successfully.🤩\n(❗We recomment to delete the password message due to privacy concerns.)"
+        "User data saved successfully.🤩\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
       );
     } catch (error) {
-      await client.sendMessage(
-        msg.from,
-        "Sorry, Your userId or password is wrong!!😔 "
-      );
+      await client.sendMessage(msg.from, `${user.error}😔..`);
     }
     console.log(state.currentUserId);
     console.log(state.currentPassword);
