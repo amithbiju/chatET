@@ -1,21 +1,4 @@
-2024/07/31-21:24:34.948 9b0 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/07/31-21:24:34.949 9b0 Recovering log #779
-2024/07/31-21:24:35.110 9b0 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000779.log 
-2024/07/31-21:24:37.460 1540 Level-0 table #788: started
-2024/07/31-21:24:37.657 1540 Level-0 table #788: 989499 bytes OK
-2024/07/31-21:24:37.659 1540 Delete type=0 #779
-2024/07/31-21:24:37.661 1540 Manual compaction at level-0 from '\x00\xc1\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\xc2\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/07/31-21:24:43.321 15f4 Compacting 1@1 + 5@2 files
-2024/07/31-21:24:43.836 15f4 Generated table #789@1: 84625 keys, 2232727 bytes
-2024/07/31-21:24:44.245 15f4 Generated table #790@1: 88165 keys, 2280493 bytes
-2024/07/31-21:24:44.398 15f4 Generated table #791@1: 11929 keys, 2162752 bytes
-2024/07/31-21:24:44.782 15f4 Generated table #792@1: 60256 keys, 2212586 bytes
-2024/07/31-21:24:44.850 15f4 Generated table #793@1: 19019 keys, 395115 bytes
-2024/07/31-21:24:44.850 15f4 Compacted 1@1 + 5@2 files => 9283673 bytes
-2024/07/31-21:24:44.851 15f4 compacted to: files[ 0 0 5 0 0 0 0 ]
-2024/07/31-21:24:44.852 15f4 Delete type=2 #781
-2024/07/31-21:24:44.852 15f4 Delete type=2 #782
-2024/07/31-21:24:44.852 15f4 Delete type=2 #783
-2024/07/31-21:24:44.852 15f4 Delete type=2 #784
-2024/07/31-21:24:44.852 15f4 Delete type=2 #785
-2024/07/31-21:24:44.852 15f4 Delete type=2 #788
+2024/08/08-21:50:47.278 24a8 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/08/08-21:50:47.279 24a8 Recovering log #79
+2024/08/08-21:50:47.311 24a8 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000079.log 
+2024/08/08-21:50:50.043 2dbc Manual compaction at level-0 from '\x00'\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00(\x00\x00\x00' @ 0 : 0; will stop at (end)

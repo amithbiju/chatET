@@ -10,6 +10,7 @@ const { getAllUserAttendance, saveAttendData } = require("./db/attenddb");
 const { isloged } = require("./db/loged");
 
 const { getAbsentSubjects } = require("./util/absentfind");
+const { timetable } = require("./util/timetable");
 const {
   privacynote,
   team,
@@ -425,7 +426,12 @@ client.on("ready", async () => {
               })
               .catch((error) => console.error("Error:", error));
 
-            await saveAttendData(userGet.userid, user.whid, todayAttendance); //saving to db
+            await saveAttendData(
+              userGet.userid,
+              user.whid,
+              todayAttendance,
+              true
+            ); //saving to db
           }
         } catch (error) {
           console.error("Error fetching attendance new ", error);
@@ -436,6 +442,8 @@ client.on("ready", async () => {
     }
   });
 });
+
+timetable(client);
 // When the client received QR-Code
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });

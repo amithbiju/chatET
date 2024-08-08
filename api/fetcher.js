@@ -27,4 +27,17 @@ async function fetchUserAttendance(username, password) {
   }
 }
 
-module.exports = { fetchUserData, fetchUserAttendance };
+async function fetchtimetable(username, password) {
+  try {
+    const response = await axios.post(`${scrapUrl}/timetable`, {
+      password: password,
+      username: username,
+    });
+    return response.data.timetable;
+  } catch (error) {
+    console.error("Error fetching attendance:", error);
+    throw error;
+  }
+}
+
+module.exports = { fetchUserData, fetchUserAttendance, fetchtimetable };
