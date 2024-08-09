@@ -1,7 +1,7 @@
 const scrapUrl = "http://127.0.0.1:5000";
 
-const himsgin =
-  /*"Greetings 'user' 😊. How can I assist you today?"
+//const himsgin =
+/*"Greetings 'user' 😊. How can I assist you today?"
 You can use these commands to interact with me :winking face:.
 
 /att or /attendance - To retrieve your attendance.
@@ -18,7 +18,7 @@ You can use these commands to interact with me :winking face:.
 
 (PS:❗You can use all the commands without '/' prefix too.. :shush:)*/
 
-const himsgout = 
+const himsgout =
   "*Hello!!!* Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
   "Here are some commands you can use to interact with me 😉." +
   "`/login` - _To login to ChatET._\n\n" +
@@ -64,7 +64,7 @@ const team =
   "*Media* - Abhijith PV & Hrishikesh VR\n" +
   "*WhatsApp Manager & Content* - Devanarayan S\n" +
   "*Maintenance & Quality Assurance* - Dev Bhagavan SK & Afsal Muhammed\n" +
-  "*Special Mentions* - Pranav SA, Ethan Harry.\n\n" +  
+  "*Special Mentions* - Pranav SA, Ethan Harry.\n\n" +
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
