@@ -30,9 +30,24 @@ async function sendTimetable(client, msg, from, day) {
 
 async function timetable(client) {
   client.on("message", async (msg) => {
-    if (msg.body === "/timetable" || /^(timetable)$/i.test(msg.body)) {
+    if (msg.body === "/tt mon" || /^(tt mon)$/i.test(msg.body)) {
       const from = msg.from;
       await sendTimetable(client, msg, from, "Monday");
+    } else if (msg.body === "/tt tue" || /^(tt tue)$/i.test(msg.body)) {
+      const from = msg.from;
+      await sendTimetable(client, msg, from, "Tuesday");
+    } else if (msg.body === "/tt wed" || /^(tt wed)$/i.test(msg.body)) {
+      const from = msg.from;
+      await sendTimetable(client, msg, from, "Wednesday");
+    } else if (msg.body === "/tt thu" || /^(tt thu)$/i.test(msg.body)) {
+      const from = msg.from;
+      await sendTimetable(client, msg, from, "Thusday");
+    } else if (msg.body === "/tt fri" || /^(tt fri)$/i.test(msg.body)) {
+      const from = msg.from;
+      await sendTimetable(client, msg, from, "Friday");
+    } else if (msg.body === "/tt sat" || /^(tt sat)$/i.test(msg.body)) {
+      const from = msg.from;
+      await sendTimetable(client, msg, from, "Saturday");
     }
   });
 }

@@ -68,4 +68,4 @@ const team =
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
-module.exports = { scrapUrl, privacynote, team, himsgin, himsgout, helpmsg };
+module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg };
