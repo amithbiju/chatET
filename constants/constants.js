@@ -1,7 +1,7 @@
 const scrapUrl = "http://127.0.0.1:5000";
 
 const himsgin =
-  "Greetings 'user' 😊. How can I assist you today?"
+  /*"Greetings 'user' 😊. How can I assist you today?"
 You can use these commands to interact with me :winking face:.
 
 /att or /attendance - To retrieve your attendance.
@@ -16,7 +16,7 @@ You can use these commands to interact with me :winking face:.
 
 /logout - To logout of ChatET :satisfied emoji:.
 
-(PS:❗You can use all the commands without '/' prefix too.. :shush:)
+(PS:❗You can use all the commands without '/' prefix too.. :shush:)*/
 
 const himsgout = 
   "Hello!!! Welcome to ChatET, your personal attendance specialist 😊. How can I assist you today?\n\n" +
