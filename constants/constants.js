@@ -72,4 +72,4 @@ const team =
   "*Pranav SA* & *Afsal Muhammed* - _Quality Assurance_\n\n" +
   "Together, we strive to provide you with the best experience!❤";
 
-module.exports = { scrapUrl, privacynote, team, welcomemsg, helpmsg };
+module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg };
