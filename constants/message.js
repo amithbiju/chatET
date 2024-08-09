@@ -15,7 +15,7 @@ const startmsg =
   "Of course, you can also text other commands if you remember them." +
   "But just so you do have gold fish memory like me (I forget you guys after you logout 😔) you can type 'Hi'.\n\n" +
   "If you want to see some other commands, type 'help'.\n\n"
-
-You can reach out to my managers and my maker :love: using the 'team' & 'dev' commands respectively. Do let them know your issues and feedbacks. They really love the flattery (Keeps them going :hehe:).
+  "You can reach out to my managers and my maker ❤️ using the 'team' & 'dev' commands respectively."
+  "Do let them know your issues and feedbacks. They really love the flattery (Keeps them going :hehe:).
 
 Glad to have you on board :salute:."
