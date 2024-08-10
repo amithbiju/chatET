@@ -8,6 +8,7 @@
 
 # client
 .wwebjs_auth
+/.wwebjs_auth
 # testing
 /coverage
 
