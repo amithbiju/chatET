@@ -1,5 +1,22 @@
 const scrapUrl = "http://127.0.0.1:5000";
 
+const aboutmsg = 
+  "About me, ChatET 🤖\n\n" +
+  "An idea developed and executed by our mastermind 🧠 Developer Amith Biju. " +
+  "Amith together with his team of passionate colleagues from Backtick (`/team` to know more about them 😉) " +
+  "went on a mission to make this idea a success to where it has evolved today.\n\n" +
+  "I am your personal Attendance assistant tasked to simplify your academic life by " +
+  "providing real-time access to your attendance information directly on WhatsApp, " +
+  "so that you never hit that condonation 😯 (not guaranteed is what my manager says 😬)\n\n." +
+  "My Features:\n\n" +
+  "*Real-time attendance*: Quickly check your attendance status anytime.\n\n" + 
+  "*Secure Credentials*: Your ETLab credentials are stored securely with encryption.\n\n" +
+  "*Absence Notifications*: Get notified if you’re marked absent from any class.\n\n" +
+  "Other commands:\n" +
+  "`/privacy` - Privacy T&C of users.\n" +
+  "`/team` - Checkout who all are working behind the scenes.\n" +
+  "`/dev` - Contact of my Maker 😍.";
+
 const himsgout =
   "*Hello!!!* Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
   "Here are some commands you can use to interact with me 😉." +
