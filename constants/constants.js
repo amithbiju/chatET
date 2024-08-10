@@ -1,6 +1,6 @@
 const scrapUrl = "http://127.0.0.1:5000";
 
-const aboutmsg = 
+const aboutmsg =
   "About me, ChatET 🤖\n\n" +
   "An idea developed and executed by our mastermind 🧠 Developer Amith Biju. " +
   "Amith together with his team of passionate colleagues from Backtick (`/team` to know more about them 😉) " +
@@ -9,7 +9,7 @@ const aboutmsg =
   "providing real-time access to your attendance information directly on WhatsApp, " +
   "so that you never hit that condonation 😯 (not guaranteed is what my manager says 😬)\n\n." +
   "My Features:\n\n" +
-  "*Real-time attendance*: Quickly check your attendance status anytime.\n\n" + 
+  "*Real-time attendance*: Quickly check your attendance status anytime.\n\n" +
   "*Secure Credentials*: Your ETLab credentials are stored securely with encryption.\n\n" +
   "*Absence Notifications*: Get notified if you’re marked absent from any class.\n\n" +
   "Other commands:\n" +
@@ -61,10 +61,10 @@ const team =
   "*The masterminds behind ChatET ✌*\n\n" +
   "*Development* - Amith Biju\n" +
   "*Media* - Abhijith PV & Hrishikesh VR\n" +
-  "*WhatsApp Manager & Content* - Devanarayan S\n" +
-  "*Maintenance & Quality Assurance* - Dev Bhagavan SK & Afsal Muhammed\n" +
-  "*Special Mentions* - Pranav SA, Ethan Harry.\n\n" +
+  "*WhatsAppManager & Content* - Devanarayan S\n" +
+  "*Maintenance & QualityAssurance* - Dev Bhagavan SK & Afsal Muhammed\n\n" +
+  "_Special Mentions to  Pranav SA, Ethan Harry & R5A._\n\n" +
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
-module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg };
+module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg, aboutmsg };

@@ -20,7 +20,9 @@ const {
   team,
   welcomemsg,
   helpmsg,
+  aboutmsg,
 } = require("./constants/constants");
+const { hi_msg_in } = require("./constants/message");
 const { subjectNames } = require("./constants/subjectname");
 
 const app = express();
@@ -63,36 +65,40 @@ const client = new Client({
 client.once("ready", () => {
   console.log("Client is ready!");
 });
-client.on("message", (msg) => {
-  if (
-    msg.body === "Hi" ||
-    msg.body === "hi" ||
-    msg.body === "HI" ||
-    msg.body === "Hello" ||
-    msg.body === "hello" ||
-    msg.body === "HELLO"
-  ) {
-    msg.reply(welcomemsg);
-  } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
-    msg.reply(helpmsg);
-  } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
-    msg.reply(
-      "*Welcome to ChatET!🤩*\nFirst start using ChatEt by connecting bot with ETLab use '/login' or get commands at '/help'"
-    );
+client.on("message", async (msg) => {
+  const from = msg.from;
+  try {
+    const userName = await isloged(from);
+    if (userName) {
+      if (/^(hi|hello)$/i.test(msg.body)) {
+        msg.reply(hi_msg_in(userName));
+      } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
+        msg.reply(helpmsg);
+      } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
+        msg.reply(
+          "*Welcome to ChatET!🤩*\nFirst start using ChatEt by connecting bot with ETLab use '/login' or get commands at '/help'"
+        );
+      }
+    } else {
+      if (/^(hi|hello)$/i.test(msg.body)) {
+        msg.reply(himsgout);
+      } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
+        msg.reply(helpmsg);
+      } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
+        msg.reply(
+          "*Welcome to ChatET!🤩*\nFirst start using ChatEt by connecting bot with ETLab use '/login' or get commands at '/help'"
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error during login check:", error);
+    await msg.reply("There was an error checking your login status.");
   }
 });
 
 client.on("message", (msg) => {
   if (msg.body == "/about" || /^(about)$/i.test(msg.body)) {
-    msg
-      .reply(
-        "*About ChatET*\nWelcome to ChatET, your personal attendance assistant!this is a simple bot Designed to simplify your academic life, ChatET provides real-time access to your attendance information directly on WhatsApp. \n\n*Features:*\n_Instant Attendance Updates:_ Quickly check your attendance status anytime. \n_Survey-Free:_ Bypass compulsory surveys on ETLab. \n_Secure Credentials:_ Your ETLab credentials are stored securely with encryption. \n_Absence Notifications:_ Get notified if you’re marked absent from any class."
-      )
-      .then(() => {
-        msg.reply(
-          "Other commands:\n*/privacy* - _Privacy and terms&conditions of users._\n*/team* - _The whole team of ChatET._\n*/dev* - _Contact of Developer._"
-        );
-      });
+    msg.reply(aboutmsg);
   }
 });
 client.on("message", (msg) => {
@@ -376,7 +382,7 @@ client.on("message", async (msg) => {
 //auto_absent
 
 client.on("message", async (msg) => {
-  if (msg.body === "/notify-ab" || /^(notify-ab)$/i.test(msg.body)) {
+  if (msg.body === "/notify" || /^(notify)$/i.test(msg.body)) {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
@@ -408,7 +414,7 @@ client.on("message", async (msg) => {
 });
 
 client.on("message", async (msg) => {
-  if (msg.body === "/stop-ab" || /^(stop-ab)$/i.test(msg.body)) {
+  if (msg.body === "/stopab" || /^(stopab)$/i.test(msg.body)) {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
