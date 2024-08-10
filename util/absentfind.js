@@ -7,10 +7,11 @@ function parseAttendance(attendanceStr) {
 async function getAbsentSubjects(pastDayAttendance, todayAttendance) {
   try {
     const absentSubjects = [];
-
+    const todayAttendanceSlice = todayAttendance.slice(0, -2);
+    const pastDayAttendanceSlice = pastDayAttendance.slice(0, -2);
     // Compare past day and today attendance
-    todayAttendance.forEach((todaySub) => {
-      const pastSub = pastDayAttendance.find(
+    todayAttendanceSlice.forEach((todaySub) => {
+      const pastSub = pastDayAttendanceSlice.find(
         (sub) => sub.subject === todaySub.subject
       );
 

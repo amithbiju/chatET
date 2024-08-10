@@ -33,7 +33,7 @@ mongoose
 app.listen(port, () => {
   console.log("server started");
 });
-
+//mongodb+srv://htimaamith:<password>@chatet.pgzqhma.mongodb.net/
 // Create a new client instance
 const client = new Client({
   puppeteer: {
@@ -400,6 +400,7 @@ client.on("ready", async () => {
       const users = await getAllUserAttendance();
       for (const user of users) {
         try {
+          console.log(user);
           const userGet = await getUserData(user.whid);
           if (userGet) {
             const todayAttendance = await fetchUserAttendance(
@@ -410,7 +411,7 @@ client.on("ready", async () => {
               .then(async (absentSubjects) => {
                 if (absentSubjects) {
                   console.log("Absent subjects:", absentSubjects);
-                  const absent = absentSubjects.slice(0, -1);
+                  const absent = absentSubjects;
                   let absentList = `Good Morning!🌞\n🛑\nYou (${user.username}) were absent on :- \n`;
                   absent.forEach((absent, index) => {
                     const subjectName = subjectNames[absent] || absent;
@@ -431,7 +432,7 @@ client.on("ready", async () => {
               user.whid,
               todayAttendance,
               true
-            ); //saving to db
+            ); //update the to db
           }
         } catch (error) {
           console.error("Error fetching attendance new ", error);
