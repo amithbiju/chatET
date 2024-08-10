@@ -1,11 +1,11 @@
-2024/08/10-11:36:35.763 2c64 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/08/10-11:36:35.764 2c64 Recovering log #83
-2024/08/10-11:36:36.121 2c64 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000083.log 
-2024/08/10-11:36:43.139 12b8 Level-0 table #88: started
-2024/08/10-11:36:43.255 12b8 Level-0 table #88: 1058578 bytes OK
-2024/08/10-11:36:43.276 12b8 Delete type=0 #83
-2024/08/10-11:36:43.278 12b8 Manual compaction at level-0 from '\x00*\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00+\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/08/10-11:36:47.851 18b8 Compacting 1@1 + 1@2 files
-2024/08/10-11:36:48.187 18b8 Generated table #89@1: 46308 keys, 1788581 bytes
-2024/08/10-11:36:48.187 18b8 Compacted 1@1 + 1@2 files => 1788581 bytes
-2024/08/10-11:36:48.188 18b8 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/08/10-22:25:58.470 34d8 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/08/10-22:25:58.470 34d8 Recovering log #111
+2024/08/10-22:25:58.580 34d8 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000111.log 
+2024/08/10-22:26:01.156 29bc Level-0 table #116: started
+2024/08/10-22:26:01.195 29bc Level-0 table #116: 463538 bytes OK
+2024/08/10-22:26:01.196 29bc Delete type=0 #111
+2024/08/10-22:26:01.199 29bc Manual compaction at level-0 from '\x005\x00\x00\x00' @ 72057594037927935 : 1 .. '\x006\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/08/10-22:26:05.049 35a0 Compacting 1@1 + 1@2 files
+2024/08/10-22:26:05.279 35a0 Generated table #117@1: 58914 keys, 2158314 bytes
+2024/08/10-22:26:05.279 35a0 Compacted 1@1 + 1@2 files => 2158314 bytes
+2024/08/10-22:26:05.280 35a0 compacted to: files[ 0 0 1 0 0 0 0 ]

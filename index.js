@@ -6,7 +6,11 @@ const { fetchUserData, fetchUserAttendance } = require("./api/fetcher");
 const cron = require("node-cron");
 
 const { saveUserData, getUserData, deleteUserData } = require("./db/userdb");
-const { getAllUserAttendance, saveAttendData } = require("./db/attenddb");
+const {
+  getAllUserAttendance,
+  saveAttendData,
+  getUserAttendance,
+} = require("./db/attenddb");
 const { isloged } = require("./db/loged");
 
 const { getAbsentSubjects } = require("./util/absentfind");
@@ -274,26 +278,54 @@ client.on("message", async (msg) => {
 });
 
 //signout
+let userConfirmationState = {};
+
 client.on("message", async (msg) => {
+  const from = msg.from;
+
   if (msg.body === "/signout" || /^(signout)$/i.test(msg.body)) {
-    const from = msg.from;
     try {
       const userGet = await getUserData(from);
       if (userGet) {
-        deleteUserData(from);
+        // Store userGet in the state along with the awaiting confirmation state
+        userConfirmationState[from] = {
+          state: "awaiting_confirmation",
+          user: userGet,
+        };
         await msg.reply(
-          `SignedOut!!😌\nIt was a pleasure to serve you, ${userGet.name}😊`
+          `Hi ${userGet.name}😊, signing out will stop _Absent notification system_ \n would you like to continue? *y or n*`
         );
       } else {
-        await msg.reply("You are not LogedIn😌");
+        await msg.reply("You are not logged in😌");
       }
     } catch (error) {
-      console.error("Error fetching attendance", error);
+      console.error("Error fetching user data:", error);
       await client.sendMessage(
-        msg.from,
+        from,
         "Sorry, there was an error fetching your user details😥"
       );
     }
+  } else if (
+    userConfirmationState[from] &&
+    userConfirmationState[from].state === "awaiting_confirmation"
+  ) {
+    const reply = msg.body.trim().toLowerCase();
+    const userGet = userConfirmationState[from].user; // Retrieve userGet from the state
+
+    if (reply === "y") {
+      try {
+        await deleteUserData(from);
+        await msg.reply(
+          `Signed out!!😌\nIt was a pleasure to serve you, ${userGet.name}😊`
+        );
+      } catch (error) {
+        console.error("Error deleting user data:", error);
+        await msg.reply("Sorry, there was an error signing you out😥");
+      }
+    } else if (reply === "n") {
+      await msg.reply(`Good to see you again! ${userGet.name}😊`);
+    }
+    delete userConfirmationState[from]; // Reset the state after handling the confirmation
   }
 });
 
@@ -348,7 +380,8 @@ client.on("message", async (msg) => {
     const from = msg.from;
     try {
       const userGet = await getUserData(from);
-      if (userGet) {
+      const userAtt = await getUserAttendance(from);
+      if (userGet && userAtt.enable == false) {
         await msg.reply(
           `G’day! ${userGet.name} 🤗.\n_You have *enabled* Absent detection and Notification provider , you will be notified every day morning if you miss a class._`
         );
@@ -357,6 +390,10 @@ client.on("message", async (msg) => {
           userGet.password
         );
         await saveAttendData(userGet.userid, from, attendance, true); //saving to db
+      } else if (userGet && userAtt.enable == true) {
+        await msg.reply(
+          `G’day! ${userGet.name} 🤗.\n_You have already *enabled* Absent detection and Notification provider!!😁_`
+        );
       } else {
         await msg.reply("Plz login to enable it!😥");
       }

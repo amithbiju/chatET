@@ -21,6 +21,27 @@ async function getAllUserAttendance() {
   }
 }
 
+async function getUserAttendance(from) {
+  try {
+    const existingUser = await Attendance.findOne({ whid: from }).select(
+      "username  whid  enable"
+    );
+
+    if (existingUser) {
+      return {
+        userid: existingUser.username,
+        whid: existingUser.whid,
+        enable: existingUser.enable,
+      };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching data from db:", error);
+    throw error;
+  }
+}
+
 //this is to save attendance data
 async function saveAttendData(username, from, attendance, enable) {
   try {
@@ -50,4 +71,4 @@ async function saveAttendData(username, from, attendance, enable) {
   }
 }
 
-module.exports = { getAllUserAttendance, saveAttendData };
+module.exports = { getAllUserAttendance, saveAttendData, getUserAttendance };
