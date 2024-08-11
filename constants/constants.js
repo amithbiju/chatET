@@ -61,8 +61,8 @@ const team =
   "*The masterminds behind ChatET ✌*\n\n" +
   "*Development* - Amith Biju\n" +
   "*Media* - Abhijith PV & Hrishikesh VR\n" +
-  "*WhatsAppManager & Content* - Devanarayan S\n" +
-  "*Maintenance & QualityAssurance* - Dev Bhagavan SK & Afsal Muhammed\n\n" +
+  "*WhatsApp Manager & Content* - Devanarayan S\n" +
+  "*Maintenance & Quality Assurance* - Dev Bhagavan SK & Afsal Muhammed\n\n" +
   "_Special Mentions to  Pranav SA, Ethan Harry & R5A._\n\n" +
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
