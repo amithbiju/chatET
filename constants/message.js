@@ -26,4 +26,4 @@ function start_msg_in(username) {
 };
 
 
-module.exports = { hi_msg_in, start_msg_in, start_msg_out };
+module.exports = { hi_msg_in, start_msg_in};
