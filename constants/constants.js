@@ -67,4 +67,17 @@ const team =
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
-module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg, aboutmsg };
+const dev = 
+  "Meet my Maker 🥰.\n\n" +
+  "Amith Biju - +91 95262 76014\n\n" +
+  "Feel free to contact him 😊.";
+
+const support = 
+  "Get help from our *Support team*.\n\n" +
+  "Devanarayan - +91 77368 97530\n\n" +
+  "Amith Biju - +91 95262 76014\n\n" +
+  "Afsal - +91 89218 43449\n\n" +
+  "Feel free to contact us we can help you out 😊.\n" +
+  "❗Contact hours : 08:00 - 22:00 Hours.";
+
+module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg, aboutmsg, dev, support};
