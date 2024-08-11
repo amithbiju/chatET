@@ -147,16 +147,20 @@ client.on("message", async (msg) => {
       const userName = await isloged(from);
       if (userName) {
         await msg.reply(
-          `You are already logged in as ${userName}.🤗\nWant to change login credentials, Try '/signin'.`
+          `You are already logged in as ${userName}. No need of logging in again 😉.\n` +
+          "Want to try `/chguser`?\n\n" +
+          "This command allows you to automatically logout from your current user and prompt you to login to another account."
         );
         state.isloggedin = true;
       } else {
         state.awaitingUsername = true;
         await msg.reply(
-          "Plz Note _We are getting attendance from EtLab, so we require userId and password of your EtLab and we are storing your data as encrypted only.😊_"
+          "❗Please note that we are sourcing your attendance from ETLab and therefore we require your UserID and Password. " +
+          "Don't worry *your credentials are encrypted* 😌."
         );
         await msg.reply(
-          "*Plz enter the EtLab userID.*(just enter the userid only '2*****')"
+          "Please enter your *ETLab UserID*." +
+          "(PS: ❗It is your *College Admission Number '2*****'*)"
         );
       }
     } catch (error) {
@@ -168,11 +172,11 @@ client.on("message", async (msg) => {
     state.awaitingUsername = false;
     state.awaitingPassword = true;
     await msg.reply(
-      "*Plz enter the EtLab password.*(just enter the password only)"
+      "Please enter your *ETLab password*."
     );
   } else if (state.awaitingPassword && from === msg.from && !state.isloggedin) {
     state.currentPassword = msg.body;
-    await client.sendMessage(msg.from, "Plz wait.. validating🧐");
+    await client.sendMessage(msg.from, "Please wait.. validating credentials🧐");
     state.awaitingPassword = false;
     state.isloggedin = false;
     // Fetch user data from API
@@ -191,16 +195,19 @@ client.on("message", async (msg) => {
       ); //saving to db
       await client.sendMessage(
         msg.from,
-        `Hello ${user.user_data.name} (${user.user_data.department_id}) welcome to ChatET 😎.`
+        `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.` 
+        "You can start exploring by literally texting 'start' 😯.\n\n" +
+        "❗Note : Absence Detection Notification enabled by default."
       );
       await client.sendMessage(
         msg.from,
-        "User data saved successfully😊\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
+        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns. " +
+        "This is an important step. To know more about your privacy, type '/privacy'. (Advice you to start with 'start')"
       );
     } catch (error) {
       await client.sendMessage(
         msg.from,
-        "Login failed!! Sorry plz check your credentials!😔.."
+        "Login failed 😔!!! Please check your UserID and Password & try again using the '/login' command."
       );
     }
     console.log(state.currentUserId);
@@ -262,16 +269,19 @@ client.on("message", async (msg) => {
       ); //saving to db
       await client.sendMessage(
         msg.from,
-        `Hello ${user.user_data.name} (${user.user_data.department_id}) welcome to ChatET😎`
+        `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.` 
+        "You can start exploring by literally texting 'start' 😯.\n\n" +
+        "❗Note : Absence Detection Notification enabled by default."
       );
       await client.sendMessage(
         msg.from,
-        "User data saved successfully.🤩\nAbsence notifications enabled👍.\n(❗We recomment to delete the password message due to privacy concerns.)"
+        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns. " +
+        "This is an important step. To know more about your privacy, type '/privacy'. (Advice you to start with 'start')"
       );
     } catch (error) {
       await client.sendMessage(
         msg.from,
-        "Login failed!! Sorry plz check your credentials!😔.."
+        "Login failed 😔!!! Please check your UserID and Password & try again using the '/login' command."
       );
     }
     console.log(state.currentUserId);
@@ -322,7 +332,8 @@ client.on("message", async (msg) => {
       try {
         await deleteUserData(from);
         await msg.reply(
-          `Signed out!!😌\nIt was a pleasure to serve you, ${userGet.name}😊`
+          "Signed Out successfully!!😌" +
+          `It was a pleasure to have you on board, ${userGet.name}😊`
         );
       } catch (error) {
         console.error("Error deleting user data:", error);
@@ -367,13 +378,13 @@ client.on("message", async (msg) => {
         await client.sendMessage(msg.from, attendList);
         await client.sendMessage(msg.from, totalList);
       } else {
-        await msg.reply("Plz login to get attendance !😌");
+        await msg.reply("Please login to get your attendance !😌. Use `/login`");
       }
     } catch (error) {
       console.error("Error fetching attendance", error);
       await client.sendMessage(
         msg.from,
-        "Sorry, there was an error fetching your attendance"
+        "Sorry, an error has occured in retrieving your attendance. Please try again later. If this issue persists, please contact '/support'."
       );
     }
   }
@@ -389,7 +400,8 @@ client.on("message", async (msg) => {
       const userAtt = await getUserAttendance(from);
       if (userGet && userAtt.enable == false) {
         await msg.reply(
-          `G’day! ${userGet.name} 🤗.\n_You have *enabled* Absent detection and Notification provider , you will be notified every day morning if you miss a class._`
+          `Hey ${userGet.name} 🤗,` +
+          "You have successfully *enabled* Absence Detection Notification. You will now be notified everyday morning, if you ever missed a class."
         );
         const attendance = await fetchUserAttendance(
           userGet.userid,
@@ -398,10 +410,10 @@ client.on("message", async (msg) => {
         await saveAttendData(userGet.userid, from, attendance, true); //saving to db
       } else if (userGet && userAtt.enable == true) {
         await msg.reply(
-          `G’day! ${userGet.name} 🤗.\n_You have already *enabled* Absent detection and Notification provider!!😁_`
+          `Hey ${userGet.name} 🤗.\nIt seems you already have *enabled* Absence Detection Notification 😉`
         );
       } else {
-        await msg.reply("Plz login to enable it!😥");
+        await msg.reply("Please login to enable it!😥");
       }
     } catch (error) {
       console.error("Error fetching attendance", error);
@@ -420,25 +432,25 @@ client.on("message", async (msg) => {
       const userGet = await getUserData(from);
       if (userGet) {
         await msg.reply(
-          `G’day! ${userGet.name} 🤗.\n_You have *disabled* Absent detection and Notification provider._`
+          `Hey ${userGet.name} 🤗.\nYou have successfully *disabled* Absence Detection Notification.`
         );
         const attendance = null;
         await saveAttendData(userGet.userid, from, attendance, false); //saving to db
       } else {
-        await msg.reply("Plz login to enable it!😥");
+        await msg.reply("Please login to disable it!😥");
       }
     } catch (error) {
-      console.error("Error fetching attendance", error);
+      console.error("Error fetching user data", error);
       await client.sendMessage(
         msg.from,
-        "Sorry, there was an error fetching your attendance"
+        "Sorry, there was an error fetching your user data"
       );
     }
   }
 });
 
 client.on("ready", async () => {
-  cron.schedule("30 08 * * *", async () => {
+  cron.schedule("30 03 * * *", async () => {
     try {
       const users = await getAllUserAttendance();
       for (const user of users) {
@@ -455,13 +467,13 @@ client.on("ready", async () => {
                 if (absentSubjects) {
                   console.log("Absent subjects:", absentSubjects);
                   const absent = absentSubjects;
-                  let absentList = `Good Morning!🌞\n🛑\nYou (${user.username}) were absent on :- \n`;
+                  let absentList = `Good Morning!🌞\n🛑 This is an automated message to let you know that\nYou (${user.username}) were marked absent 👀 for the following hours:-\n`;
                   absent.forEach((absent, index) => {
                     const subjectName = subjectNames[absent] || absent;
                     absentList += `${index + 1}. *${subjectName}*\n`;
                   });
                   absentList +=
-                    "hours yesterday❗ \nplz contact subject teacher if you were present..\nCheck you current attendance at `/att` or `att`";
+                    "Please contact your subject teacher ASAP if you were present..\nTo check you current attendance, type `/att` or `att`";
                   await client.sendMessage(user.whid, absentList);
                   console.log(
                     `Message sent to ${user.username} (${user.whid})`
