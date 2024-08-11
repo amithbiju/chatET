@@ -23,7 +23,7 @@ function start_msg_in(username) {
    "Do let them know your issues and feedbacks. They really love the flattery (Keeps them going 😁)."+
    "Glad to have you on board 🫡."
   );
-};
+}
 
 
 module.exports = { hi_msg_in, start_msg_in};
