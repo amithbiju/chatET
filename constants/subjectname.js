@@ -206,7 +206,7 @@ const subjectNames = {
   MET307: "Machine Tools and Metrology",
   HUT300: "Industrial Economics and Management",
   HUT310: "Foreign Trade for Engineers",
-  MCN30: "Disaster Management",
+  MCN301: "Disaster Management",
   MEL331: "Machine Tools Lab-II",
   MEL333: "Thermal Engineering Lab-I",
   MET312: "Non-Destructive Testing",
