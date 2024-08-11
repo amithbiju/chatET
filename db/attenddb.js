@@ -5,7 +5,7 @@ const { Attendance } = require("../model/user");
 async function getAllUserAttendance() {
   try {
     const attend = await Attendance.find({ enable: true }).select(
-      "username  whid subjectData"
+      "username  whid subjectData enable"
     );
 
     const userAttendance = attend.map((user) => ({

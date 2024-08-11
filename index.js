@@ -438,7 +438,7 @@ client.on("message", async (msg) => {
 });
 
 client.on("ready", async () => {
-  cron.schedule("30 03 * * *", async () => {
+  cron.schedule("30 08 * * *", async () => {
     try {
       const users = await getAllUserAttendance();
       for (const user of users) {
