@@ -67,12 +67,12 @@ const team =
   "Visit us at instagram to see more updates : @_backtick_\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
-const dev = 
+const dev =
   "Meet my Maker 🥰.\n\n" +
   "Amith Biju - +91 95262 76014\n\n" +
   "Feel free to contact him 😊.";
 
-const support = 
+const support =
   "Get help from our *Support team*.\n\n" +
   "Devanarayan - +91 77368 97530\n\n" +
   "Amith Biju - +91 95262 76014\n\n" +
@@ -82,6 +82,7 @@ const support =
 
 const startmsgout =
   "Hey, Welcome to the *ChatET* experience. Let's do a walkaround shall we 😁.\n\n" +
+  "To start using ChatET to its full extent, you, the user, must login first using the `/login` command 😉\n\n" +
   "You can always start your conversation with a `Hi` to see all the important commands used to interact with me 👋.\n\n" +
   "Of course, you can also text other commands if you remember them. But just so you do have gold fish memory like me " +
   "(I forget you guys after you logout 😔) you can type `Hi`.\n\n" +
@@ -90,4 +91,14 @@ const startmsgout =
   "Do let them know your issues and feedbacks. They really love the flattery (Keeps them going 😁).\n\n" +
   "Hope to see you starting using our service soon 🫡.";
 
-module.exports = { scrapUrl, privacynote, team, himsgout, helpmsg, aboutmsg, dev, support, startmsgout};
+module.exports = {
+  scrapUrl,
+  privacynote,
+  team,
+  himsgout,
+  helpmsg,
+  aboutmsg,
+  dev,
+  support,
+  startmsgout,
+};

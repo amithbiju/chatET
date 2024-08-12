@@ -18,9 +18,11 @@ const { timetable } = require("./util/timetable");
 const {
   privacynote,
   team,
-  welcomemsg,
   helpmsg,
   aboutmsg,
+  startmsgout,
+  support,
+  dev,
 } = require("./constants/constants");
 const { hi_msg_in, start_msg_in } = require("./constants/message");
 const { subjectNames } = require("./constants/subjectname");
@@ -83,9 +85,7 @@ client.on("message", async (msg) => {
       } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
         msg.reply(helpmsg);
       } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
-        msg.reply(
-          "*Welcome to ChatET!🤩*\nFirst start using ChatEt by connecting bot with ETLab use '/login' or get commands at '/help'"
-        );
+        msg.reply(startmsgout);
       }
     }
   } catch (error) {
@@ -107,15 +107,10 @@ client.on("message", (msg) => {
   }
 });
 client.on("message", async (msg) => {
-  const contactId = "919526276014";
-  const contactIdd = "917736897530";
-  const contactIda = "918921843449";
   if (msg.body === "/dev" || /^(dev)$/i.test(msg.body)) {
-    msg.reply(`Amith Biju- ${contactId}\nFeel free to contact😊`);
+    msg.reply(dev);
   } else if (msg.body == "/support" || /^(support)$/i.test(msg.body)) {
-    msg.reply(
-      `*Support-*\nDevanarayan- ${contactIdd}\nAfsal- ${contactIda}\nAmith Biju- ${contactId}\n_Feel free to contact us we can help you out_😊`
-    );
+    msg.reply(support);
   }
 });
 //LOGIN
@@ -145,9 +140,8 @@ client.on("message", async (msg) => {
       const userName = await isloged(from);
       if (userName) {
         await msg.reply(
-          `You are already logged in as ${userName}. No need of logging in again 😉.\n` +
-            "Want to try `/chguser`?\n\n" +
-            "This command allows you to automatically logout from your current user and prompt you to login to another account."
+          `You are already logged in as ${userName}. No need of logging in again 😉.\nWant to try ` /
+            chguser`?\n\n _This command allows you to automatically logout from your current user and prompt you to login to another account._`
         );
         state.isloggedin = true;
       } else {
@@ -198,7 +192,7 @@ client.on("message", async (msg) => {
       );
       await client.sendMessage(
         msg.from,
-        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns. " +
+        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns. " +
           "This is an important step. To know more about your privacy, type '/privacy'. (Advice you to start with 'start')"
       );
     } catch (error) {

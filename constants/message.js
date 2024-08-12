@@ -14,7 +14,7 @@ function hi_msg_in(username) {
 
 function start_msg_in(username) {
   return (
-    `Heya ${username}, Welcome to the ChatET experience. Let's do a walkaround shall we 😁.\n\n` +
+    `Hey ${username}, Welcome to the ChatET experience. Let's do a walkaround shall we 😁.\n\n` +
     "You can always start your conversation with a `Hi` to see all the important commands used to interact with me 👋.\n\n" +
     "Of course, you can also text other commands if you remember them." +
     "But just so you do have gold fish memory like me (I forget you guys after you logout 😔) you can type `Hi`.\n\n" +
