@@ -2,7 +2,7 @@ const scrapUrl = "http://127.0.0.1:5000";
 
 const aboutmsg =
   "About me, ChatET 🤖\n\n" +
-  "This was an idea developed and executed by our masterminds 🧠 at BackTick (`/team` to know more about them 😉). " +
+  "An idea developed and executed by our masterminds 🧠 at BackTick (`/team` to know more about them 😉). " +
   "We thought of a solution to the endless attendance dilemmas and thus " +
   "went on a mission to make this idea a success to where it has evolved today.\n\n" +
   "I am your *Personal Attendance Assistant* tasked to simplify your academic life by " +
