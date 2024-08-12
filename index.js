@@ -140,8 +140,7 @@ client.on("message", async (msg) => {
       const userName = await isloged(from);
       if (userName) {
         await msg.reply(
-          `You are already logged in as ${userName}. No need of logging in again 😉.\nWant to try ` /
-            chguser`?\n\n _This command allows you to automatically logout from your current user and prompt you to login to another account._`
+          `You are already logged in as ${userName}. No need of logging in again 😉.\nWant to try * /chguser*?\n\n _This command allows you to automatically logout from your current user and prompt you to login to another account._`
         );
         state.isloggedin = true;
       } else {
@@ -228,7 +227,7 @@ client.on("message", async (msg) => {
   const state = signinStates[from];
 
   if (
-    (msg.body === "/signin" || /^(signin)$/i.test(msg.body)) &&
+    (msg.body === "/chguser" || /^(chguser)$/i.test(msg.body)) &&
     !state.awaitingUsername &&
     !state.awaitingPassword
   ) {
