@@ -2,20 +2,20 @@ const scrapUrl = "http://127.0.0.1:5000";
 
 const aboutmsg =
   "About me, ChatET 🤖\n\n" +
-  "An idea developed and executed by our mastermind 🧠 Developer Amith Biju. " +
-  "Amith together with his team of passionate colleagues from Backtick (`/team` to know more about them 😉) " +
+  "An idea developed and executed by our masterminds 🧠 at BackTick (`/team` to know more about them 😉). " +
+  "We thought of a solution to the endless attendance dilemmas and thus " +
   "went on a mission to make this idea a success to where it has evolved today.\n\n" +
-  "I am your personal Attendance assistant tasked to simplify your academic life by " +
-  "providing real-time access to your attendance information directly on WhatsApp, " +
-  "so that you never hit that condonation 😯 (not guaranteed is what my manager says 😬)\n\n." +
+  "I am your *Personal Attendance Assistant* tasked to simplify your academic life by " +
+  "providing *real-time access* to your attendance information directly on WhatsApp, " +
+  "so that you never hit that condonation 😯 (not guaranteed is what my manager says 😬).\n\n" +
   "My Features:\n\n" +
-  "*Real-time attendance*: Quickly check your attendance status anytime.\n\n" +
-  "*Secure Credentials*: Your ETLab credentials are stored securely with encryption.\n\n" +
-  "*Absence Notifications*: Get notified if you’re marked absent from any class.\n\n" +
+  "*Real-time attendance*: _Quickly check your attendance status anytime._\n\n" +
+  "*Secure Credentials*: _Your ETLab credentials are stored securely with encryption._\n\n" +
+  "*Absence Notifications*: _Get notified if you’re marked absent from any class._\n\n" +
   "Other commands:\n" +
-  "`/privacy` - Privacy T&C of users.\n" +
-  "`/team` - Checkout who all are working behind the scenes.\n" +
-  "`/dev` - Contact of my Maker 😍.";
+  "`/privacy` - _Privacy T&C of users._\n" +
+  "`/team` - _Checkout who all are working behind the scenes._\n" +
+  "`/dev` - _Contact of my Maker 😍._";
 
 const himsgout =
   "*Hello!!!* Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
@@ -64,13 +64,15 @@ const team =
   "*WhatsApp Manager & Content* - Devanarayan S\n" +
   "*Maintenance & Quality Assurance* - Dev Bhagavan SK & Afsal Muhammed\n\n" +
   "_Special Mentions to  Pranav SA, Ethan Harry & R5A._\n\n" +
-  "Visit us at instagram to see more updates : @_backtick_\n" +
+  "Visit us at instagram to see more updates : @_backtick_\n\n" +
   "_Together, we strive to provide you with the best experience!❤_";
 
 const dev =
   "Meet my Maker 🥰.\n\n" +
   "Amith Biju - +91 95262 76014\n\n" +
-  "Feel free to contact him 😊.";
+  "Feel free to contact him 😊." +
+  "Feel free to contact him, he can help you out 😊.\n" +
+  "❗Contact hours : 08:00 - 22:00 Hours.";
 
 const support =
   "Get help from our *Support team*.\n\n" +
