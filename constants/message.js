@@ -2,12 +2,12 @@ function hi_msg_in(username) {
   return (
     `Greetings ${username} 😊. How can I assist you today?\n` +
     "You can use these commands to interact with me 😉.\n\n" +
-    "`/att` or `/attendance` - To retrieve your attendance.\n\n" +
-    "`/notify` - To enable Absence Detection Notifications.\n\n" +
-    "`/stopab` - To disable Absence Detection Notifications.\n\n" +
-    "`/help` - Get the list of other commands you can use.\n\n" +
-    "`/support` - To get support for your problems.\n\n" +
-    "`/logout` - To logout of ChatET 😌.\n\n" +
+    "`/att` or `/attendance` - _To retrieve your attendance._\n\n" +
+    "`/notify` - _To enable Absence Detection Notifications._\n\n" +
+    "`/stopab` - _To disable Absence Detection Notifications._\n\n" +
+    "`/help` - _Get the list of other commands you can use._\n\n" +
+    "`/support` - _To get support for your problems._\n\n" +
+    "`/logout` - _To logout of ChatET 😌._\n\n" +
     "_(*PS*:❗You can use all the commands without '/' prefix too..🤫)_"
   );
 }
