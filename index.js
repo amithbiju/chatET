@@ -188,13 +188,13 @@ client.on("message", async (msg) => {
       );
       await client.sendMessage(
         msg.from,
-        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns. " +
-          "This is an important step. To know more about your privacy, type '/privacy'. (Advice you to start with 'start')"
+        "❗ We recommend you to *'Delete for Everyone'* your password message due to privacy concerns. " +
+          "This is an important step. To know more about your privacy, type `/privacy`. (Advice you to start with 'start')"
       );
     } catch (error) {
       await client.sendMessage(
         msg.from,
-        "Login failed 😔!!! Please check your UserID and Password & try again using the '/login' command."
+        "Login failed 😔!!! Please check your UserID and Password & try again using the `/login` command."
       );
     }
     console.log(state.currentUserId);
@@ -206,7 +206,7 @@ client.on("message", async (msg) => {
   }
 });
 
-//SIGNIN
+//Change User
 let signinStates = {}; // Track login state for each user
 
 client.on("message", async (msg) => {
@@ -229,14 +229,14 @@ client.on("message", async (msg) => {
     !state.awaitingPassword
   ) {
     state.awaitingUsername = true;
-    await msg.reply("Plz enter the EtLab userID.");
+    await msg.reply("Please enter your *ETLab UserID*.");
   } else if (state.awaitingUsername && from === msg.from) {
     state.currentUserId = msg.body;
     state.awaitingUsername = false;
     state.awaitingPassword = true;
-    await msg.reply("Plz enter the EtLab password.");
+    await msg.reply("Please enter your *ETLab password*.");
   } else if (state.awaitingPassword && from === msg.from) {
-    await client.sendMessage(msg.from, "Plz wait.. validating🧐");
+    await client.sendMessage(msg.from, "Please wait.. validating credentials🧐");
     state.currentPassword = msg.body;
     state.awaitingPassword = false;
 
@@ -256,17 +256,17 @@ client.on("message", async (msg) => {
       ); //saving to db
       await client.sendMessage(
         msg.from,
-        `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.\n You can start exploring by literally texting 'start' 😯.\n\n ❗Note : Absence Detection Notification enabled by default`
+        `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.\n\n❗Note : Absence Detection Notification enabled by default`
       );
       await client.sendMessage(
         msg.from,
-        "❗ We recommend you to 'Delete for Everyone' your password message due to privacy concerns.\n " +
-          "This is an important step. To know more about your privacy, type '/privacy'. (Advice you to start with 'start')"
+        "❗We recommend you to *'Delete for Everyone'* your password message due to privacy concerns.\n " +
+          "This is an important step. To know more about your privacy, type `/privacy`."
       );
     } catch (error) {
       await client.sendMessage(
         msg.from,
-        "Login failed 😔!!! Please check your UserID and Password & try again using the '/login' command."
+        "Login failed 😔!!! Please check your UserID and Password & try again using the `/login` command \n_(chguser not needed as you are already logged out)_"
       );
     }
     console.log(state.currentUserId);
@@ -278,7 +278,7 @@ client.on("message", async (msg) => {
   }
 });
 
-//signout
+//Logout
 let userConfirmationState = {};
 
 client.on("message", async (msg) => {
@@ -294,7 +294,7 @@ client.on("message", async (msg) => {
           user: userGet,
         };
         await msg.reply(
-          `Hi ${userGet.name}😊, signing out will stop _Absent notification system_ \n would you like to continue? *y or n*`
+          `Hey ${userGet.name}😊, signing out will stop _Absence Detection Notification_ \nWould you like to continue? *Y or N*`
         );
       } else {
         await msg.reply("You are not logged in😌");
@@ -317,7 +317,7 @@ client.on("message", async (msg) => {
       try {
         await deleteUserData(from);
         await msg.reply(
-          `Signed Out successfully!!😌 \nIt was a pleasure to have you on board, ${userGet.name}😊`
+          `*Signed Out* successfully!!😌 \nIt was a pleasure to have you on board, ${userGet.name}😊`
         );
       } catch (error) {
         console.error("Error deleting user data:", error);
@@ -341,7 +341,7 @@ client.on("message", async (msg) => {
     try {
       const userGet = await getUserData(from);
       if (userGet) {
-        await msg.reply(`G’day! ${userGet.name}🤗.\nLoading attendance...`);
+        await msg.reply(`G’day! ${userGet.name}🤗.\nLoading your attendance...`);
         const attendance = await fetchUserAttendance(
           userGet.userid,
           userGet.password
@@ -370,7 +370,7 @@ client.on("message", async (msg) => {
       console.error("Error fetching attendance", error);
       await client.sendMessage(
         msg.from,
-        "Sorry, an error has occured in retrieving your attendance. Please try again later. If this issue persists, please contact '/support'."
+        "Sorry, an error has occured in retrieving your attendance. Please try again later. If this issue persists, please contact `/support`."
       );
     }
   }
@@ -402,10 +402,10 @@ client.on("message", async (msg) => {
         await msg.reply("Please login to enable it!😥");
       }
     } catch (error) {
-      console.error("Error fetching attendance", error);
+      console.error("Error fetching notification status", error);
       await client.sendMessage(
         msg.from,
-        "Sorry, there was an error fetching your attendance"
+        "Sorry, there was an error fetching your notification status"
       );
     }
   }
@@ -426,10 +426,10 @@ client.on("message", async (msg) => {
         await msg.reply("Please login to disable it!😥");
       }
     } catch (error) {
-      console.error("Error fetching user data", error);
+      console.error("Error fetching notification status", error);
       await client.sendMessage(
         msg.from,
-        "Sorry, there was an error fetching your user data"
+        "Sorry, there was an error fetching your notification status"
       );
     }
   }
