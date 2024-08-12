@@ -1,3 +1,15 @@
 2024/08/12-14:21:39.667 e14 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
 2024/08/12-14:21:39.668 e14 Recovering log #17
 2024/08/12-14:21:39.669 e14 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\Local Storage\leveldb/000017.log 
+2024/08/12-14:23:43.397 f4c Level-0 table #20: started
+2024/08/12-14:23:43.451 f4c Level-0 table #20: 17371 bytes OK
+2024/08/12-14:23:43.452 f4c Delete type=0 #17
+2024/08/12-14:23:43.453 f4c Compacting 4@0 + 1@1 files
+2024/08/12-14:23:43.456 f4c Generated table #21@0: 141 keys, 5451 bytes
+2024/08/12-14:23:43.456 f4c Compacted 4@0 + 1@1 files => 5451 bytes
+2024/08/12-14:23:43.457 f4c compacted to: files[ 0 1 1 0 0 0 0 ]
+2024/08/12-14:23:43.457 f4c Delete type=2 #8
+2024/08/12-14:23:43.457 f4c Delete type=2 #11
+2024/08/12-14:23:43.457 f4c Delete type=2 #14
+2024/08/12-14:23:43.457 f4c Delete type=2 #16
+2024/08/12-14:23:43.457 f4c Delete type=2 #20
