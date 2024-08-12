@@ -22,6 +22,7 @@ const {
   aboutmsg,
   startmsgout,
   support,
+  himsgout,
   dev,
 } = require("./constants/constants");
 const { hi_msg_in, start_msg_in } = require("./constants/message");
@@ -69,28 +70,24 @@ client.once("ready", () => {
 });
 client.on("message", async (msg) => {
   const from = msg.from;
-  try {
-    const userName = await isloged(from);
-    if (userName) {
-      if (/^(hi|hello)$/i.test(msg.body)) {
-        msg.reply(hi_msg_in(userName));
-      } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
-        msg.reply(helpmsg);
-      } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
-        msg.reply(start_msg_in(userName));
-      }
-    } else {
-      if (/^(hi|hello)$/i.test(msg.body)) {
-        msg.reply(himsgout);
-      } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
-        msg.reply(helpmsg);
-      } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
-        msg.reply(startmsgout);
-      }
+
+  const userName = await isloged(from);
+  if (userName) {
+    if (/^(hi|hello)$/i.test(msg.body)) {
+      msg.reply(hi_msg_in(userName));
+    } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
+      msg.reply(helpmsg);
+    } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
+      msg.reply(start_msg_in(userName));
     }
-  } catch (error) {
-    console.error("Error during login check:", error);
-    await msg.reply("There was an error checking your login status.");
+  } else {
+    if (/^(hi|hello)$/i.test(msg.body)) {
+      msg.reply(himsgout);
+    } else if (msg.body == "/help" || /^(help)$/i.test(msg.body)) {
+      msg.reply(helpmsg);
+    } else if (msg.body == "/start" || /^(start)$/i.test(msg.body)) {
+      msg.reply(startmsgout);
+    }
   }
 });
 

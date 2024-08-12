@@ -1,15 +1,15 @@
-2024/08/10-23:12:02.374 3c98 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/08/10-23:12:02.375 3c98 Recovering log #129
-2024/08/10-23:12:02.425 3c98 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000129.log 
-2024/08/10-23:12:04.625 1478 Level-0 table #135: started
-2024/08/10-23:12:04.649 1478 Level-0 table #135: 262729 bytes OK
-2024/08/10-23:12:04.651 1478 Delete type=0 #129
-2024/08/10-23:12:04.654 3c98 Manual compaction at level-0 from '\x00<\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00=\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/08/10-23:12:08.134 1478 Compacting 1@1 + 2@2 files
-2024/08/10-23:12:08.425 1478 Generated table #136@1: 55256 keys, 2213409 bytes
-2024/08/10-23:12:08.462 1478 Generated table #137@1: 11541 keys, 216068 bytes
-2024/08/10-23:12:08.462 1478 Compacted 1@1 + 2@2 files => 2429477 bytes
-2024/08/10-23:12:08.463 1478 compacted to: files[ 0 0 2 0 0 0 0 ]
-2024/08/10-23:12:08.464 1478 Delete type=2 #131
-2024/08/10-23:12:08.464 1478 Delete type=2 #132
-2024/08/10-23:12:08.464 1478 Delete type=2 #135
+2024/08/12-21:42:46.556 266c Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/08/12-21:42:46.556 266c Recovering log #144
+2024/08/12-21:42:46.650 266c Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000144.log 
+2024/08/12-21:42:53.350 2d4 Level-0 table #150: started
+2024/08/12-21:42:53.375 2d4 Level-0 table #150: 459727 bytes OK
+2024/08/12-21:42:53.379 2d4 Delete type=0 #144
+2024/08/12-21:42:53.380 2d4 Manual compaction at level-0 from '\x00@\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00A\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/08/12-21:42:56.991 28ec Compacting 1@1 + 2@2 files
+2024/08/12-21:42:57.288 28ec Generated table #151@1: 57388 keys, 2218948 bytes
+2024/08/12-21:42:57.340 28ec Generated table #152@1: 13765 keys, 320630 bytes
+2024/08/12-21:42:57.340 28ec Compacted 1@1 + 2@2 files => 2539578 bytes
+2024/08/12-21:42:57.341 28ec compacted to: files[ 0 0 2 0 0 0 0 ]
+2024/08/12-21:42:57.341 28ec Delete type=2 #146
+2024/08/12-21:42:57.342 28ec Delete type=2 #147
+2024/08/12-21:42:57.342 28ec Delete type=2 #150
