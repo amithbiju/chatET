@@ -288,7 +288,7 @@ let userConfirmationState = {};
 client.on("message", async (msg) => {
   const from = msg.from;
 
-  if (msg.body === "/signout" || /^(signout)$/i.test(msg.body)) {
+  if (msg.body === "/logout" || /^(logout)$/i.test(msg.body)) {
     try {
       const userGet = await getUserData(from);
       if (userGet) {
