@@ -1,15 +1,26 @@
-2024/08/12-21:45:44.155 788 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/08/12-21:45:44.155 788 Recovering log #149
-2024/08/12-21:45:44.193 788 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatET\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000149.log 
-2024/08/12-21:45:46.758 1600 Level-0 table #155: started
-2024/08/12-21:45:46.777 1600 Level-0 table #155: 188008 bytes OK
-2024/08/12-21:45:46.778 1600 Delete type=0 #149
-2024/08/12-21:45:46.779 1600 Manual compaction at level-0 from '\x00A\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00B\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/08/12-21:45:51.591 1714 Compacting 1@1 + 2@2 files
-2024/08/12-21:45:51.883 1714 Generated table #156@1: 57904 keys, 2217275 bytes
-2024/08/12-21:45:51.949 1714 Generated table #157@1: 14166 keys, 348426 bytes
-2024/08/12-21:45:51.949 1714 Compacted 1@1 + 2@2 files => 2565701 bytes
-2024/08/12-21:45:51.950 1714 compacted to: files[ 0 0 2 0 0 0 0 ]
-2024/08/12-21:45:51.951 1714 Delete type=2 #151
-2024/08/12-21:45:51.951 1714 Delete type=2 #152
-2024/08/12-21:45:51.951 1714 Delete type=2 #155
+2024/08/13-22:23:18.799 3630 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/08/13-22:23:18.799 3630 Recovering log #222
+2024/08/13-22:23:19.367 3630 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000222.log 
+2024/08/13-22:23:23.540 3630 Level-0 table #228: started
+2024/08/13-22:23:23.575 3630 Level-0 table #228: 569029 bytes OK
+2024/08/13-22:23:23.577 3630 Delete type=0 #222
+2024/08/13-22:23:23.578 3630 Manual compaction at level-0 from '\x00S\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00T\x00\x00\x00' @ 0 : 0; will stop at (end)
+2024/08/13-22:23:29.129 cf8 Compacting 1@1 + 2@2 files
+2024/08/13-22:23:29.806 cf8 Generated table #229@1: 73261 keys, 2243036 bytes
+2024/08/13-22:23:30.254 cf8 Generated table #230@1: 35818 keys, 1797934 bytes
+2024/08/13-22:23:30.254 cf8 Compacted 1@1 + 2@2 files => 4040970 bytes
+2024/08/13-22:23:30.255 cf8 compacted to: files[ 0 0 2 0 0 0 0 ]
+2024/08/13-22:23:30.256 cf8 Delete type=2 #224
+2024/08/13-22:23:30.256 cf8 Delete type=2 #225
+2024/08/13-22:23:30.256 cf8 Delete type=2 #228
+2024/08/13-22:26:11.774 120c Level-0 table #232: started
+2024/08/13-22:26:11.837 120c Level-0 table #232: 1522572 bytes OK
+2024/08/13-22:26:11.838 120c Delete type=0 #227
+2024/08/13-22:26:16.403 120c Compacting 1@1 + 2@2 files
+2024/08/13-22:26:16.664 120c Generated table #233@1: 75825 keys, 2258291 bytes
+2024/08/13-22:26:16.838 120c Generated table #234@1: 38498 keys, 2003058 bytes
+2024/08/13-22:26:16.838 120c Compacted 1@1 + 2@2 files => 4261349 bytes
+2024/08/13-22:26:16.839 120c compacted to: files[ 0 0 2 0 0 0 0 ]
+2024/08/13-22:26:16.839 120c Delete type=2 #229
+2024/08/13-22:26:16.839 120c Delete type=2 #230
+2024/08/13-22:26:16.839 120c Delete type=2 #232

@@ -69,10 +69,9 @@ const team =
 
 const dev =
   "Meet my Maker 🥰.\n\n" +
-  "Amith Biju - +91 95262 76014\n\n" +
-  "Feel free to contact him 😊." +
-  "Feel free to contact him, he can help you out 😊.\n" +
-  "❗Contact hours : 08:00 - 22:00 Hours.";
+  "Amith Biju - +91 95262 76014\n" +
+  "Feel free to contact 😊.\n" +
+  "Connect me on linkedIn- www.linkedin.com/in/amithbiju 😊.";
 
 const support =
   "Get help from our *Support team*.\n\n" +
