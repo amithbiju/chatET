@@ -279,11 +279,14 @@ client.on("message", async (msg) => {
 
 client.on("ready", async () => {
   cron.schedule("30 08 * * *", async () => {
+    var userCounter = 0;
+    var sentCounter = 0;
     try {
       const users = await getAllUserAttendance();
       for (const user of users) {
         try {
           console.log(user);
+          userCounter++;
           const userGet = await getUserData(user.whid);
           if (userGet) {
             const todayAttendance = await fetchUserAttendance(
@@ -293,6 +296,7 @@ client.on("ready", async () => {
             getAbsentSubjects(user.subjectData, todayAttendance)
               .then(async (absentSubjects) => {
                 if (absentSubjects) {
+                  sentCounter++;
                   console.log("Absent subjects:", absentSubjects);
                   const absent = absentSubjects;
                   let absentList = `Good Morning!🌞\n🛑 This is an automated message to let you know that\nYou (${user.username}) were marked absent 👀 for the following hours:-\n`;
@@ -321,6 +325,10 @@ client.on("ready", async () => {
           console.error("Error fetching attendance new ", error);
         }
       }
+      client.sendMessage(
+        "918921843449@c.us",
+        `*Notification System Report*\nChecked users :- ${userCounter}\nNotifiactionSent users :- ${sentCounter}`
+      ); //senting message to afsal
     } catch (error) {
       console.error("Error sending messages:", error);
     }
