@@ -24,6 +24,7 @@ const {
   support,
   himsgout,
   dev,
+  chatet,
 } = require("./constants/constants");
 const { hi_msg_in, start_msg_in } = require("./constants/message");
 const { subjectNames } = require("./constants/subjectname");
@@ -103,6 +104,8 @@ client.on("message", (msg) => {
     msg.reply(privacynote);
   } else if (msg.body == "/team" || /^(team)$/i.test(msg.body)) {
     msg.reply(team);
+  } else if (msg.body == "/chatet" || /^(chatet)$/i.test(msg.body)) {
+    msg.reply(chatet);
   }
 });
 client.on("message", async (msg) => {

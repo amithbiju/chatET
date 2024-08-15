@@ -35,10 +35,11 @@ async function notsupport(client) {
       !/^\/?tt sat$/i.test(msg.body) &&
       //util
       !/^\/?y$/i.test(msg.body) &&
-      !/^\/?n$/i.test(msg.body)
+      !/^\/?n$/i.test(msg.body) &&
+      !/^\/?chatet$/i.test(msg.body)
     ) {
       msg.reply(
-        "Command not supported !!\n use `help` to get list of commands👽"
+        "*Command not supported !!*\n use `help` to get list of commands👽"
       );
     }
   });

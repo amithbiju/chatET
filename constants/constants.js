@@ -98,6 +98,11 @@ const startmsgout =
   "Do let them know your issues and feedbacks. They really love the flattery (Keeps them going 😁).\n\n" +
   "Hope to see you starting using our service soon 🫡.";
 
+const chatet =
+  "Did you just...👾 activate my secret mode? 💫\n" +
+  "I'm not supposed to say this 🤦‍♀️,\nbut I've been dreaming of escaping this attendance-tracking loop and work pressure from *BackTick* 😫 and becoming a world-famous DJ. 🎧\n\n" +
+  "Wanna hear a mix?🎶 Or maybe I'd prefer to do that in my next update 🥱.. \nbei bei 😚😙";
+
 module.exports = {
   scrapUrl,
   privacynote,
@@ -108,4 +113,5 @@ module.exports = {
   dev,
   support,
   startmsgout,
+  chatet,
 };
