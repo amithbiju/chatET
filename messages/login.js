@@ -31,18 +31,18 @@ async function login(client) {
         const userName = await isloged(from);
         if (userName) {
           await msg.reply(
-            `You are already logged in as *${userName}*.\n No need of logging in again 😉.\n\nWant to try * /chguser*?\n _This command allows you to automatically logout from your current user and prompt you to login to another account._`
+            `You are already logged in as *${userName}*.\n No need of logging in again 😉.\n\nWant to try */chguser* ?\n_This command allows you to automatically logout from your current user and prompt you to login to another account._`
           );
           state.isloggedin = true;
         } else {
           state.awaitingUsername = true;
           await msg.reply(
-            "❗Please note that we are sourcing your attendance from ETLab and therefore we require your UserID and Password. " +
+            "❗Please note that we are sourcing your attendance from ETLab and therefore we require your *UserID and Password*. " +
               "Don't worry *your credentials are encrypted* 😌."
           );
           await msg.reply(
-            "Please enter your *ETLab UserID*." +
-              "(PS: ❗It is your *College Admission Number '2*****'*)"
+            "Please enter your *ETLab UserID*.\n" +
+              "_(PS: ❗It is your College Admission Number `******`)_"
           );
           expectInput(from);
         }
@@ -88,7 +88,7 @@ async function login(client) {
         ); //saving to db
         await client.sendMessage(
           msg.from,
-          `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.\nYou can start exploring by literally texting 'start' 😯.\n\n ❗Note : Absence Detection Notification enabled by default.`
+          `Hello *${user.user_data.name}* (${user.user_data.department_id}) 💫,\nWelcome to *ChatET* 😎.\nYou can start exploring by literally texting 'start' 😯.\n\n❗Note : Absence Detection Notification enabled by default.`
         );
         await client.sendMessage(
           msg.from,
@@ -98,7 +98,7 @@ async function login(client) {
       } catch (error) {
         await client.sendMessage(
           msg.from,
-          "Login failed 😔!!! Please check your UserID and Password & try again using the `/login` command."
+          "Login failed 😔!!!\nPlease check your *UserID and Password* & try again using the `/login` command."
         );
       }
       console.log(state.currentUserId);
@@ -165,7 +165,7 @@ async function login(client) {
         ); //saving to db
         await client.sendMessage(
           msg.from,
-          `Hello ${user.user_data.name} (${user.user_data.department_id}), Welcome to *ChatET* 😎.\n\n❗Note : Absence Detection Notification enabled by default`
+          `Hello *${user.user_data.name}* (${user.user_data.department_id})💫,\nWelcome to *ChatET* 😎.\n\n❗Note : Absence Detection Notification enabled by default`
         );
         await client.sendMessage(
           msg.from,
@@ -175,7 +175,7 @@ async function login(client) {
       } catch (error) {
         await client.sendMessage(
           msg.from,
-          "Login failed 😔!!! Please check your UserID and Password & try again using the `/login` command \n_(chguser not needed as you are already logged out)_"
+          "Login failed 😔!!!\nPlease check your UserID and Password & try again using the `/chguser` command"
         );
       }
       console.log(state.currentUserId);

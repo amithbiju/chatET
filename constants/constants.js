@@ -19,7 +19,7 @@ const aboutmsg =
 
 const himsgout =
   "*Hello!!!* Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
-  "Here are some commands you can use to interact with me 😉." +
+  "Here are some commands you can use to interact with me 😉.\n\n" +
   "`/login` - _To login to ChatET._\n\n" +
   "`/help` - _Get the list of other commands you can use._\n\n" +
   "`/support` - _To get support for your problems._\n\n" +
@@ -29,11 +29,17 @@ const himsgout =
 
 const helpmsg =
   "Here some other commands you can use...\n\n" +
+  "`/login` - _To login to ChatET._\n\n" +
+  "`/att` or `/attendance` - _To retrieve your attendance._\n\n" +
+  "`/notify` - _To enable Absence Detection Notifications._\n\n" +
+  "`/stopab` - _To disable Absence Detection Notifications._\n\n" +
+  "`/logout` - _To logout of ChatET 😌._\n\n" +
+  "`/help` - _Get the list of other commands you can use._\n\n" +
   "`/about` - _To learn more about me, ChatET 🤗._\n\n" +
   "`/support` - _To get support for your problem._\n\n" +
   "`/privacy` - _Read all the privacy T&C for users 🧐._\n\n" +
   "`/team` - _Meet my Creators & Managers._ \n\n" +
-  "`/dev` - _Contact of my Maker 🥹._" +
+  "`/dev` - _Contact of my Maker 🥹._\n\n" +
   " _(*PS:*❗You can use all the commands without '/' prefix too..🤫)_\n\n" +
   "*Powered by BackTick*";
 
