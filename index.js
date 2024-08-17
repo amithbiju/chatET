@@ -175,7 +175,8 @@ client.on("message", async (msg) => {
   if (
     msg.body === "/attendance" ||
     msg.body === "/att" ||
-    /^(att)$/i.test(msg.body)
+    /^(att)$/i.test(msg.body) ||
+    /^(attendance)$/i.test(msg.body)
   ) {
     const from = msg.from;
     try {
