@@ -18,7 +18,7 @@ const aboutmsg =
   "`/dev` - _Contact of my Maker 😍._";
 
 const himsgout =
-  "*Hello!!!* Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
+  "*Hello*, Welcome to *ChatET*, your personal attendance specialist 😊. How can I assist you today?\n\n" +
   "Here are some commands you can use to interact with me 😉.\n\n" +
   "`/login` - _To login to ChatET._\n\n" +
   "`/help` - _Get the list of other commands you can use._\n\n" +
@@ -89,7 +89,7 @@ const support =
 
 const startmsgout =
   "Hey, Welcome to the *ChatET* experience. Let's do a walkaround shall we 😁.\n\n" +
-  "To start using ChatET to its full extent, you, the user, must login first using the `/login` command 😉\n\n" +
+  "To start using ChatET to its full extent, you, the user, must login first using the  `/login` command 😉\n\n" +
   "You can always start your conversation with a `Hi` to see all the important commands used to interact with me 👋.\n\n" +
   "Of course, you can also text other commands if you remember them. But just so you do have gold fish memory like me " +
   "(I forget you guys after you logout 😔) you can type `Hi`.\n\n" +
