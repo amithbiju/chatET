@@ -84,34 +84,46 @@ async function login(client) {
       );
       state.awaitingPassword = false;
       state.isloggedin = false;
-      // Fetch user data from API
-      try {
-        const user = await fetchUserData(
-          state.currentUserId,
-          state.currentPassword
-        );
-        console.log(from);
-        await saveUserData(user.user_data, from, state.currentPassword); //saving to db
-        await saveAttendData(
-          user.user_data.username,
-          from,
-          user.subject_data,
-          true
-        ); //saving to db
+
+      //validation
+      const userId = state.currentUserId;
+
+      // Validation to check if the username starts with 'P'
+      if (userId.startsWith("P")) {
         await client.sendMessage(
           msg.from,
-          `Hello *${user.user_data.name}* (${user.user_data.department_id}) 💫,\nWelcome to *ChatET* 😎.\nYou can start exploring by literally texting 'start' 😯.\n\n❗Note : Absence Detection Notification enabled by default.`
+          "Invalid UserID 😔.\nPlease enter a valid Student UserID !!"
         );
-        await client.sendMessage(
-          msg.from,
-          "❗ We recommend you to *'Delete for Everyone'* your password message due to privacy concerns. " +
-            "This is an important step. To know more about your privacy, type `/privacy`. (Advice you to start with 'start')"
-        );
-      } catch (error) {
-        await client.sendMessage(
-          msg.from,
-          "Login failed 😔!!!\nPlease check your *UserID and Password* & try again using the `/login` command."
-        );
+      } else {
+        // Fetch user data from API
+        try {
+          const user = await fetchUserData(
+            state.currentUserId,
+            state.currentPassword
+          );
+          console.log(from);
+          await saveUserData(user.user_data, from, state.currentPassword); //saving to db
+          await saveAttendData(
+            user.user_data.username,
+            from,
+            user.subject_data,
+            true
+          ); //saving to db
+          await client.sendMessage(
+            msg.from,
+            `Hello *${user.user_data.name}* (${user.user_data.department_id}) 💫,\nWelcome to *ChatET* 😎.\nYou can start exploring by literally texting 'start' 😯.\n\n❗Note : Absence Detection Notification enabled by default.`
+          );
+          await client.sendMessage(
+            msg.from,
+            "❗ We recommend you to *'Delete for Everyone'* your password message due to privacy concerns. " +
+              "This is an important step. To know more about your privacy, type `/privacy`. (Advice you to start with 'start')"
+          );
+        } catch (error) {
+          await client.sendMessage(
+            msg.from,
+            "Login failed 😔!!!\nPlease check your *UserID and Password* & try again using the `/login` command."
+          );
+        }
       }
       console.log(state.currentUserId);
       console.log(state.currentPassword);

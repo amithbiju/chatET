@@ -1,19 +1,4 @@
-2024/08/18-10:50:06.004 590 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2024/08/18-10:50:06.005 590 Recovering log #377
-2024/08/18-10:50:06.276 590 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000377.log 
-2024/08/18-10:50:10.619 35b8 Level-0 table #385: started
-2024/08/18-10:50:10.778 35b8 Level-0 table #385: 1106243 bytes OK
-2024/08/18-10:50:10.781 35b8 Delete type=0 #377
-2024/08/18-10:50:10.782 35b8 Manual compaction at level-0 from '\x00u\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00v\x00\x00\x00' @ 0 : 0; will stop at (end)
-2024/08/18-10:50:15.212 35b8 Compacting 1@1 + 4@2 files
-2024/08/18-10:50:15.566 35b8 Generated table #386@1: 87201 keys, 2235750 bytes
-2024/08/18-10:50:15.753 35b8 Generated table #387@1: 32402 keys, 2229598 bytes
-2024/08/18-10:50:15.975 35b8 Generated table #388@1: 48117 keys, 2202599 bytes
-2024/08/18-10:50:16.025 35b8 Generated table #389@1: 12166 keys, 238008 bytes
-2024/08/18-10:50:16.025 35b8 Compacted 1@1 + 4@2 files => 6905955 bytes
-2024/08/18-10:50:16.025 35b8 compacted to: files[ 0 0 4 0 0 0 0 ]
-2024/08/18-10:50:16.026 35b8 Delete type=2 #379
-2024/08/18-10:50:16.026 35b8 Delete type=2 #380
-2024/08/18-10:50:16.026 35b8 Delete type=2 #381
-2024/08/18-10:50:16.026 35b8 Delete type=2 #382
-2024/08/18-10:50:16.026 35b8 Delete type=2 #385
+2024/08/18-19:50:16.294 2dd8 Reusing MANIFEST C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2024/08/18-19:50:16.295 2dd8 Recovering log #419
+2024/08/18-19:50:16.799 2dd8 Reusing old log C:\Users\USER\Desktop\whatsappjs\chatet\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000419.log 
+2024/08/18-19:50:19.625 3a50 Manual compaction at level-0 from '\x00|\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00}\x00\x00\x00' @ 0 : 0; will stop at (end)
