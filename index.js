@@ -158,7 +158,7 @@ client.on("message", async (msg) => {
       try {
         await deleteUserData(from);
         await msg.reply(
-          `*Signed Out* successfully!!😌 \nIt was a pleasure to have you on board, ${userGet.name}😊`
+          `*Logged Out* successfully!!😌 \nIt was a pleasure to have you on board, ${userGet.name}😊`
         );
       } catch (error) {
         console.error("Error deleting user data:", error);
