@@ -5,8 +5,7 @@ const { saveAttendData } = require("../db/attenddb");
 const { expectInput } = require("./notsupport");
 
 async function login(client) {
-  let loginStates = {}; // Track login state for each user
-
+  let loginStates = {};
   client.on("message", async (msg) => {
     const from = msg.from;
 
@@ -21,6 +20,17 @@ async function login(client) {
     }
 
     const state = loginStates[from];
+
+    // const resetState = () => {
+    //   loginStates[from] = {
+    //     awaitingUsername: false,
+    //     awaitingPassword: false,
+    //     isloggedin: false,
+    //     currentUserId: "",
+    //     currentPassword: "",
+    //   };
+    //   console.log(`Login state for ${from} has been reset due to timeout.`);
+    // };
 
     if (
       (msg.body === "/login" || /^(login)$/i.test(msg.body)) &&
@@ -45,6 +55,7 @@ async function login(client) {
               "_(PS: ❗It is your College Admission Number `******`)_"
           );
           expectInput(from);
+          //setTimeout(resetState, 300000); // Reset state after 5 minutes
         }
       } catch (error) {
         console.error("Error during login check:", error);
@@ -60,6 +71,7 @@ async function login(client) {
       state.awaitingPassword = true;
       await msg.reply("Please enter your *ETLab password*.");
       expectInput(from);
+      //setTimeout(resetState, 300000); // Reset state after 5 minutes
     } else if (
       state.awaitingPassword &&
       from === msg.from &&
@@ -108,6 +120,7 @@ async function login(client) {
       state.currentUserId = "";
       state.currentPassword = "";
     }
+    state.isloggedin = false; //to make login state false even if user was login and then logeg out !very imp
   });
 
   //Change User

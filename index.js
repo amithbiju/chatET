@@ -116,6 +116,7 @@ client.on("message", async (msg) => {
   }
 });
 //LOGIN
+//let loginStates = {}; // Track login state for each user
 login(client);
 
 //Logout
