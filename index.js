@@ -30,6 +30,7 @@ const { hi_msg_in, start_msg_in } = require("./constants/message");
 const { subjectNames } = require("./constants/subjectname");
 const { notsupport } = require("./messages/notsupport");
 const { login } = require("./messages/login");
+const { attFull } = require("./messages/attfull");
 
 const app = express();
 const port = 3000;
@@ -339,6 +340,7 @@ client.on("ready", async () => {
 
 timetable(client);
 notsupport(client); // unwanted messages here
+attFull(client, MessageMedia);
 // When the client received QR-Code
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });

@@ -36,6 +36,7 @@ async function notsupport(client) {
       //util
       !/^\/?y$/i.test(msg.body) &&
       !/^\/?n$/i.test(msg.body) &&
+      !/^\/?full$/i.test(msg.body) &&
       !/^\/?chatet$/i.test(msg.body)
     ) {
       msg.reply(
