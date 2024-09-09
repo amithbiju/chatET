@@ -26,6 +26,8 @@ async function notsupport(client) {
       !/^\/?att$/i.test(msg.body) &&
       !/^\/?notify$/i.test(msg.body) &&
       !/^\/?stopab$/i.test(msg.body) &&
+      !/^\/?attfull$/i.test(msg.body) &&
+      !/^\/?att full$/i.test(msg.body) &&
       //time table mssg
       !/^\/?tt mon$/i.test(msg.body) &&
       !/^\/?tt tue$/i.test(msg.body) &&

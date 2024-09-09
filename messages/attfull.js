@@ -3,7 +3,7 @@ const { getUserData } = require("../db/userdb");
 
 async function attFull(client, MessageMedia) {
   client.on("message", async (msg) => {
-    if (/^\/?attfull$/i.test(msg.body)) {
+    if (/^\/?attfull$/i.test(msg.body) || /^\/?att full$/i.test(msg.body)) {
       const from = msg.from;
       console.log("test");
 
@@ -14,7 +14,7 @@ async function attFull(client, MessageMedia) {
         const userGet = await getUserData(from);
         if (userGet) {
           await msg.reply(
-            `G’day! ${userGet.name}🤗.\nLoading your attendance...`
+            `G’day! ${userGet.name}🤗.\nProcessing attendance image, This may take few seconds...`
           );
           const imageBase64 = await fetchUserAttendanceImage(
             userGet.userid,
@@ -30,7 +30,7 @@ async function attFull(client, MessageMedia) {
           // Send the image as a WhatsApp message
           await client
             .sendMessage(msg.from, media, {
-              caption: "Here is your attendance image.",
+              caption: "Here is your attendance of the month.",
             })
             .then(() => {
               console.log("test23");
@@ -44,7 +44,7 @@ async function attFull(client, MessageMedia) {
         console.error("Error fetching attendance", error);
         await client.sendMessage(
           msg.from,
-          "Sorry, an error has occured in retrieving your attendance. Please try again later. If this issue persists, please contact `/support`."
+          "Sorry, an error has occured in retrieving your attendance image. Please try again later. If this issue persists, please contact `/support`."
         );
       }
     }
