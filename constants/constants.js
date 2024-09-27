@@ -35,6 +35,8 @@ const helpmsg =
   "`/stopab` - _To disable Absence Detection Notifications._\n\n" +
   "`/logout` - _To logout of ChatET 😌._\n\n" +
   "`/help` - _Get the list of other commands you can use._\n\n" +
+  "`/attfull` - _Get the attendance of this month._\n\n"+
+  "`/tt (day)` - _Get the timetable of certain day [Eg: /tt mon]"+ 
   "`/about` - _To learn more about me, ChatET 🤗._\n\n" +
   "`/support` - _To get support for your problem._\n\n" +
   "`/privacy` - _Read all the privacy T&C for users 🧐._\n\n" +
