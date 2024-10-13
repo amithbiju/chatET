@@ -41,7 +41,7 @@ async function timetable(client) {
       await sendTimetable(client, msg, from, "Wednesday");
     } else if (msg.body === "/tt thu" || /^(tt thu)$/i.test(msg.body)) {
       const from = msg.from;
-      await sendTimetable(client, msg, from, "Thusday");
+      await sendTimetable(client, msg, from, "Thursday");
     } else if (msg.body === "/tt fri" || /^(tt fri)$/i.test(msg.body)) {
       const from = msg.from;
       await sendTimetable(client, msg, from, "Friday");
