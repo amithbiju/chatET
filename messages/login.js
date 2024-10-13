@@ -13,29 +13,21 @@ async function login(client) {
       loginStates[from] = {
         awaitingUsername: false,
         awaitingPassword: false,
+        awaitingClg: false,
         isloggedin: false,
         currentUserId: "",
         currentPassword: "",
+        currentClg: "",
       };
     }
 
     const state = loginStates[from];
 
-    // const resetState = () => {
-    //   loginStates[from] = {
-    //     awaitingUsername: false,
-    //     awaitingPassword: false,
-    //     isloggedin: false,
-    //     currentUserId: "",
-    //     currentPassword: "",
-    //   };
-    //   console.log(`Login state for ${from} has been reset due to timeout.`);
-    // };
-
     if (
       (msg.body === "/login" || /^(login)$/i.test(msg.body)) &&
       !state.awaitingUsername &&
-      !state.awaitingPassword
+      !state.awaitingPassword &&
+      !state.awaitingClg
     ) {
       try {
         const userName = await isloged(from);
@@ -73,16 +65,24 @@ async function login(client) {
       expectInput(from);
       //setTimeout(resetState, 300000); // Reset state after 5 minutes
     } else if (
+      // college SELECTION
       state.awaitingPassword &&
       from === msg.from &&
       !state.isloggedin
     ) {
       state.currentPassword = msg.body;
+      state.awaitingPassword = false;
+      state.awaitingClg = true;
+      await msg.reply("Please enter your *College*.");
+      expectInput(from);
+      //setTimeout(resetState, 300000); // Reset state after 5 minutes
+    } else if (state.awaitingClg && from === msg.from && !state.isloggedin) {
+      state.currentClg = msg.body;
       await client.sendMessage(
         msg.from,
         "Please wait.. validating credentials🧐"
       );
-      state.awaitingPassword = false;
+      state.awaitingClg = false;
       state.isloggedin = false;
 
       //validation
@@ -102,7 +102,12 @@ async function login(client) {
             state.currentPassword
           );
           console.log(from);
-          await saveUserData(user.user_data, from, state.currentPassword); //saving to db
+          await saveUserData(
+            user.user_data,
+            from,
+            state.currentPassword,
+            "SCTCE"
+          ); //saving to db
           await saveAttendData(
             user.user_data.username,
             from,
@@ -181,7 +186,12 @@ async function login(client) {
           state.currentPassword
         );
         console.log(from);
-        await saveUserData(user.user_data, from, state.currentPassword); //saving to db
+        await saveUserData(
+          user.user_data,
+          from,
+          state.currentPassword,
+          "SCTCE"
+        ); //saving to db
         await saveAttendData(
           user.user_data.username,
           from,

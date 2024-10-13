@@ -341,6 +341,7 @@ client.on("ready", async () => {
 timetable(client);
 notsupport(client); // unwanted messages here
 attFull(client, MessageMedia);
+
 // When the client received QR-Code
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });

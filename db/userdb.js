@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { encryptPass, decryptPass } = require("../util/encrypt");
 const { User } = require("../model/user");
 
-async function saveUserData(userData, from, password) {
+async function saveUserData(userData, from, password, college) {
   const { username, name, department_id } = userData;
   const pass = encryptPass(password);
 
@@ -15,6 +15,7 @@ async function saveUserData(userData, from, password) {
       existingUser.name = name;
       existingUser.departmentId = department_id;
       existingUser.password = pass;
+      existingUser.college = college;
       await existingUser.save();
       console.log("User data updated successfully.");
     } else {
@@ -25,6 +26,7 @@ async function saveUserData(userData, from, password) {
         departmentId: department_id,
         whid: from,
         password: pass,
+        college,
       });
       await newUser.save();
       console.log("User data saved successfully.");

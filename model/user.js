@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   departmentId: String,
   whid: String,
   password: String,
+  college: String,
 });
 
 const User = mongoose.model("User", userSchema);
