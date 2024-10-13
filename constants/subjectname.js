@@ -481,7 +481,7 @@ const subjectNames = {
   OEXXT61N: "OE/ILE-1",
   UCHUT606: "Sustainable Engineering",
   PCXXL607: "PC LAB-7",
-  PCXXP608: "Mini Project: Socially Relevant Project",
+  PCXXP608: "Mini Project: Socially Relevant ",
 
   Total: "Total Attendance",
   Percentage: "Attendance Percentage",
