@@ -35,8 +35,8 @@ const helpmsg =
   "`/stopab` - _To disable Absence Detection Notifications._\n\n" +
   "`/logout` - _To logout of ChatET 😌._\n\n" +
   "`/help` - _Get the list of other commands you can use._\n\n" +
-  "`/attfull` - _Get the attendance of this month._\n\n"+
-  "`/tt (day)` - _Get the timetable of certain day [Eg: /tt mon]"+ 
+  "`/attfull` - _Get the attendance of this month._\n\n" +
+  "`/tt (day)` - _Get the timetable of certain day [Eg: /tt mon]" +
   "`/about` - _To learn more about me, ChatET 🤗._\n\n" +
   "`/support` - _To get support for your problem._\n\n" +
   "`/privacy` - _Read all the privacy T&C for users 🧐._\n\n" +
@@ -104,6 +104,14 @@ const chatet =
   "Did you just...👾 activate my secret mode? 💫\n" +
   "I'm not supposed to say this 🤦‍♀️,\nbut I've been dreaming of escaping this attendance-tracking loop and work pressure from *BackTick* 😫 and becoming a world-famous DJ. 🎧\n\n" +
   "Wanna hear a mix?🎶 Or maybe I'd prefer to do that in my next update 🥱.. \nbei bei 😚😙";
+
+const colleges =
+  "1 -> SCTCE\n" +
+  "2 -> CET\n" +
+  "3 -> TKM\n" +
+  "1 - SCTCE\n" +
+  "1 - SCTCE\n" +
+  "1 - SCTCE\n";
 
 module.exports = {
   scrapUrl,
