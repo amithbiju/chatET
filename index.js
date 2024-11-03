@@ -281,7 +281,7 @@ client.on("message", async (msg) => {
 });
 
 client.on("ready", async () => {
-  cron.schedule("30 08 * * *", async () => {
+  cron.schedule("30 02 * * *", async () => {
     var userCounter = 0;
     var sentCounter = 0;
     try {
