@@ -36,7 +36,7 @@ const app = express();
 const port = 3000;
 //db conn.
 const mongoUri =
-  "mongodb+srv://htimaamith:NZ7E4YgHmD28jScF@chatet.pgzqhma.mongodb.net/?retryWrites=true&w=majority&appName=chatet";
+  "replace this with you mongodb atlas url ";
 
 mongoose
   .connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -46,7 +46,6 @@ mongoose
 app.listen(port, () => {
   console.log("server started");
 });
-//mongodb+srv://htimaamith:<password>@chatet.pgzqhma.mongodb.net/
 // Create a new client instance
 const client = new Client({
   puppeteer: {
