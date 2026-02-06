@@ -36,7 +36,7 @@ const app = express();
 const port = 3000;
 //db conn.
 const mongoUri =
-  "replace this with you mongodb atlas url ";
+  "replace this with you mongodb atlas url";
 
 mongoose
   .connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
